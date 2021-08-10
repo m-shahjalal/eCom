@@ -1,0 +1,52 @@
+.backTop {
+	@apply fixed bottom-4 right-2 z-20 text-blue-400 font-bold hover:bg-blue-800 hover:text-white transition-all rounded-full;
+}
+.container {
+	background-color: #272727;
+	@apply pt-24;
+	min-height: 390px;
+}
+.footer {
+	@apply text-white mx-auto border-t-2 pt-10;
+	max-width: 1100px;
+}
+.row {
+	@apply grid grid-cols-1 md:grid-cols-7;
+}
+
+.col1 {
+	@apply self-start px-7 col-span-3 mb-10 p-4;
+}
+.imageDiv {
+	@apply w-40 mb-5;
+}
+.image {
+	@apply w-full;
+}
+.col2 {
+	@apply flex justify-between col-span-4 mb-10 p-4;
+}
+.cols {
+	@apply block;
+}
+.head {
+	@apply mb-6 p-0;
+	color: #56b280;
+}
+.list {
+	@apply flex justify-center flex-col;
+}
+.link {
+	@apply py-3 font-light;
+}
+.bottomContainer {
+	@apply bg-white text-gray-600 m-auto h-16;
+	max-width: 1100px;
+}
+.bottom {
+	@apply flex justify-between items-center h-full;
+}
+.externalLink {
+	@apply px-2;
+	color: #56b280;
+}

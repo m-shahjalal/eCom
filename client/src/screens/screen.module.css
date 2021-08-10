@@ -1,0 +1,56 @@
+.category,
+.wish,
+.cart {
+	@apply pt-28;
+}
+.cart {
+	@apply flex flex-col sm:flex-row;
+}
+.checkout {
+	@apply flex justify-center items-center;
+}
+.col {
+	@apply flex-1 px-5;
+}
+.cardDetail {
+	@apply w-full h-full bg-gray-700;
+}
+.checkout {
+	@apply p-4;
+}
+/* ----------------------------------------------------------------
+                            thanks
+------------------------------------------------------------------- */
+
+.thanks {
+	max-width: 800px;
+	@apply mx-auto text-center flex justify-center items-center flex-col mt-24;
+}
+.svg {
+	color: #56b280;
+	width: 150px;
+	height: 150px;
+}
+.thanksLead {
+	@apply text-5xl mb-3 mt-3;
+}
+.orderNum {
+	color: #56b280;
+	@apply text-xl mb-4;
+}
+.successText {
+	@apply text-gray-500;
+}
+.out {
+	@apply text-gray-700 border border-gray-300 mb-2 text-sm p-1 rounded px-2 bg-green-100;
+}
+.backToShop {
+	@apply text-xl mx-auto mt-4 border-b border-green-700 py-1 text-green-600;
+}
+
+.logo {
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	width: 100px;
+}

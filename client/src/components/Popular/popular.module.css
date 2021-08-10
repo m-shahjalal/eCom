@@ -1,0 +1,19 @@
+.popular {
+	max-width: 1100px;
+	@apply mx-auto mt-24 flex flex-col justify-center items-center p-7 pb-20;
+}
+.head {
+	@apply text-4xl mb-4;
+}
+.text {
+	@apply mb-12;
+}
+.row {
+	@apply grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+}
+.loading {
+	@apply col-span-4 -mt-4;
+}
+.error {
+	@apply text-center mb-10 text-2xl;
+}

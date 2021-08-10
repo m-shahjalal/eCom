@@ -1,0 +1,24 @@
+.paginate {
+	@apply px-4 text-center sm:px-6 mb-16;
+}
+.text {
+	@apply py-2 text-center text-gray-700;
+}
+.row {
+	@apply flex-1 flex justify-center gap-2;
+}
+
+.link {
+	@apply relative inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-green-500 hover:text-white transition-all duration-500 w-28;
+}
+.link:disabled {
+	@apply cursor-not-allowed hover:text-gray-500 bg-gray-200 text-gray-500;
+}
+.homeLink {
+	@apply relative inline-flex items-center justify-center px-4 py-2 border-2 border-gray-200 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-green-500 hover:text-white transition-all duration-500;
+}
+.active {
+	color: #56b280;
+	border-color: #56b280;
+	@apply hover:text-white border-2;
+}

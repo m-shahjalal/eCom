@@ -1,0 +1,92 @@
+.checkout {
+	max-width: 1100px;
+	margin: auto;
+	@apply container w-full;
+}
+.logo {
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	width: 100px;
+}
+.lead {
+	@apply text-2xl mb-5;
+}
+
+/* ----------------------------------------------------------------
+                            payments
+------------------------------------------------------------------- */
+.payment {
+	max-width: 800px;
+	@apply mt-16 mx-auto mb-8;
+}
+.methodLead {
+	max-width: 800px;
+	@apply m-auto text-2xl pb-5 mt-12 text-center;
+}
+
+.row {
+	max-width: 800px;
+	@apply mx-auto mt-3 border-2 rounded-lg py-8 px-6;
+}
+
+.credit {
+	@apply border py-8 px-6 rounded-lg flex flex-col justify-center items-center;
+}
+.creditFlex {
+	@apply flex gap-8 justify-center items-center flex-col sm:flex-row;
+}
+.creditCol {
+	@apply flex flex-wrap gap-4;
+}
+.creditRow {
+	@apply flex gap-y-4 flex-row w-full;
+}
+.fieldInput {
+	@apply w-full bg-white rounded border border-gray-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out h-10;
+}
+.error {
+	@apply text-xs text-red-600 mt-1;
+}
+.ship {
+	max-width: 800px;
+	@apply mx-auto mt-20 border-2 rounded-lg p-6;
+}
+.contactTo {
+	@apply flex justify-between items-center border-b;
+}
+.contactTo:last-child {
+	@apply border-none;
+}
+
+.shipCol {
+	@apply p-3;
+}
+.editBtn {
+	color: #56b280;
+	@apply text-xs;
+}
+
+.button {
+	background-color: #56b280;
+	@apply uppercase text-sm font-medium text-white w-full border-none outline-none cursor-pointer rounded-md p-3 px-5 flex-1 text-center;
+}
+.btnDiv {
+	@apply flex justify-between gap-4 mx-auto mt-6 w-full mb-10;
+}
+
+/* atm component */
+.numberRow,
+.nameRow,
+.bottomRow {
+	@apply mb-3;
+}
+.bottomRow {
+	@apply flex gap-4;
+}
+.bottomCol {
+	@apply w-full;
+}
+.row {
+	@apply flex gap-8 flex-col sm:flex-row justify-center items-center;
+}

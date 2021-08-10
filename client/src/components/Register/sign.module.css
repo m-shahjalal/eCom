@@ -1,0 +1,49 @@
+.sign {
+	@apply text-gray-600 m-auto flex justify-center items-center;
+	min-height: 100vh;
+}
+.signContainer {
+	@apply container px-5 py-24 mx-auto flex flex-wrap items-center;
+}
+.leftRow {
+	@apply lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0;
+}
+.lead {
+	@apply font-medium text-3xl text-gray-900;
+}
+.text {
+	@apply leading-relaxed mt-4;
+}
+.rightColumn {
+	@apply lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0;
+}
+.signLead {
+	@apply text-gray-900 text-lg font-medium  mb-5;
+}
+.col {
+	@apply relative mb-4;
+}
+.label {
+	@apply leading-7 text-sm text-gray-600;
+}
+.input {
+	@apply w-full bg-white rounded border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
+}
+.input:focus {
+	box-shadow: 0 0 2px #56b280;
+	border-color: #56b280;
+}
+.button {
+	@apply text-white  border-0 py-2 mt-2 px-8 focus:outline-none rounded text-lg;
+	background: #56b280;
+}
+.changeBtn {
+	@apply ml-2;
+	color: #56b280;
+}
+.bottom {
+	@apply text-xs text-gray-500 mt-3;
+}
+.error {
+	@apply text-xs text-red-600 mt-1;
+}

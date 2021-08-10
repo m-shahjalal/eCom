@@ -1,0 +1,50 @@
+.testimonial {
+	height: 600px;
+	background: #56b2801a;
+	@apply flex flex-col justify-center items-center;
+}
+.head {
+	@apply pt-20 text-4xl mb-4;
+}
+.sub {
+	@apply text-center mb-7;
+}
+.slider {
+	@apply flex relative items-center;
+}
+.left,
+.right {
+	margin-top: -90px;
+	border-radius: 50%;
+	transition: all 0.3s ease;
+	padding: 2px;
+	cursor: pointer;
+}
+.left:hover,
+.right:hover {
+	background-color: white;
+}
+.row {
+	@apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+}
+/* @apply flex justify-center items-center; */
+/* single card */
+.card {
+	@apply mx-4 bg-white p-4 h-80 flex flex-col items-center mb-24;
+}
+.image {
+	@apply w-28 h-28 mt-5 mb-4;
+}
+.star {
+	@apply flex justify-center items-center mb-5;
+}
+.fullStar,
+.halfStar {
+	@apply w-6;
+}
+.text {
+	@apply text-xl text-center;
+}
+.name {
+	@apply mt-4 text-gray-500;
+}

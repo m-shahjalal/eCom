@@ -1,4 +1,17 @@
 {
-	"cSpell.words": ["craco", "ecom", "mern", "postbuild"],
+	"cSpell.words": [
+		"Formik",
+		"Otomanopee",
+		"cloudinary",
+		"craco",
+		"ecom",
+		"gsip",
+		"mern",
+		"originalname",
+		"postbuild",
+		"signin",
+		"signup",
+		"zipcode"
+	],
 	"git.ignoreLimitWarning": true
 }

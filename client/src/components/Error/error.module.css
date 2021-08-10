@@ -1,0 +1,9 @@
+.error {
+	@apply flex justify-center items-center h-screen;
+}
+.head {
+	@apply text-4xl;
+}
+.error > svg {
+	@apply mr-2;
+}

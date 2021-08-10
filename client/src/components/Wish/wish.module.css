@@ -1,0 +1,10 @@
+.head {
+	@apply text-3xl text-center pb-6;
+}
+
+.list {
+	@apply grid grid-cols-1 md:grid-cols-2 m-4 gap-6 lg:grid-cols-3;
+}
+.button {
+	@apply bg-white my-2 flex justify-center m-auto py-4 px-10 items-center;
+}

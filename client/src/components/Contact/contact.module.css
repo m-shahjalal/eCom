@@ -1,0 +1,47 @@
+.contact {
+	@apply text-gray-600 relative mx-auto;
+	max-width: 700px;
+}
+.containerDiv {
+	@apply container px-5 py-24 mx-auto;
+}
+.top {
+	@apply flex flex-col text-center w-full mb-12;
+}
+.head {
+	@apply sm:text-3xl text-2xl font-medium mb-4 text-gray-900 mt-10;
+	color: #56b280;
+}
+.text {
+	@apply lg:w-2/3 mx-auto leading-relaxed text-base;
+}
+.inputTop {
+	@apply lg:w-1/2 md:w-2/3 mx-auto;
+}
+.inputContainer {
+	@apply flex flex-wrap -m-2;
+}
+.row {
+	@apply p-2 mb-2 w-full sm:w-1/2;
+}
+.label {
+	@apply leading-7 text-sm text-gray-600;
+}
+.input {
+	@apply w-full bg-opacity-50 rounded border border-gray-400 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
+}
+.input:focus,
+textarea:focus {
+	border-color: #56b280;
+	box-shadow: 0 0 4px #56b280;
+}
+.textareaRow {
+	@apply p-2 w-full mb-1;
+}
+.textarea {
+	@apply w-full bg-opacity-50 rounded border border-gray-400 focus:bg-white h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out;
+}
+.button {
+	@apply flex justify-center items-center w-full mx-auto text-white border-0 py-2 px-8 focus:outline-none  rounded text-lg;
+	background: #56b280;
+}

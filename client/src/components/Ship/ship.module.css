@@ -1,0 +1,113 @@
+/* ----------------------------------------------------------------
+                            shipping address
+------------------------------------------------------------------- */
+
+.ship {
+	max-width: 800px;
+	@apply mx-auto mt-20 border-2 rounded-lg p-6;
+}
+.shipMethod {
+	max-width: 800px;
+	@apply border-2 rounded-lg flex justify-between p-4 mx-auto;
+}
+.contactTo {
+	@apply flex justify-between items-center border-b;
+}
+.contactTo:last-child {
+	@apply border-none;
+}
+
+.shipCol {
+	@apply p-3;
+}
+.method {
+	max-width: 800px;
+	margin: auto;
+}
+.methodLead {
+	max-width: 800px;
+	@apply m-auto text-2xl pb-5 mt-12 text-center;
+}
+.gray {
+	@apply text-gray-600 mr-2;
+}
+.radioInput {
+	margin-right: 10px;
+}
+.label {
+	@apply text-base ml-3 text-gray-600;
+}
+.editBtn {
+	color: #56b280;
+	@apply text-xs;
+}
+
+/* ----------------------------------------------------------------
+                            EDIT
+------------------------------------------------------------------- */
+
+.address {
+	max-width: 800px;
+	@apply h-screen mt-12 mx-auto w-full;
+}
+
+.form {
+	@apply grid;
+}
+.card {
+	@apply border-2 rounded-lg drop-shadow-2xl md:p-7 p-3;
+}
+
+.lead {
+	@apply text-2xl mb-3 text-gray-700;
+}
+
+.field {
+	@apply w-full flex flex-col  rounded-md mb-1 py-2 mt-2;
+}
+
+.fieldLabel {
+	@apply uppercase mb-1;
+}
+
+.fieldInput {
+	@apply w-full bg-white rounded border border-gray-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out h-10;
+}
+.fieldInput:focus {
+	box-shadow: 0 0 2px #56b280;
+	border-color: #56b280;
+}
+.field:focus-within {
+	border-color: #56b280;
+}
+
+.selectInput {
+	@apply py-0;
+}
+
+.fields {
+	display: grid;
+	grid-gap: 1rem;
+}
+.fields2 {
+	grid-template-columns: 1fr 1fr;
+}
+.fields3 {
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.btnDiv {
+	@apply flex justify-between gap-4 mx-auto mt-6 w-full mb-10;
+}
+.button {
+	background-color: #56b280;
+	@apply uppercase text-sm font-medium text-white w-full border-none outline-none cursor-pointer rounded-md p-3 px-5 flex-1 text-center;
+}
+.button:focus-visible {
+	background-color: #333;
+}
+.error {
+	@apply text-xs text-red-600 mt-1;
+}
+.errorAtm {
+	@apply text-xs text-red-600 -mt-2;
+}

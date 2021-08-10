@@ -1,0 +1,27 @@
+.categoryContainer {
+	@apply max-w-3xl m-auto;
+}
+.category {
+	@apply bg-white border shadow-lg mx-8 block sm:grid grid-cols-3 gap-4 p-4 rounded-lg;
+}
+.item {
+	@apply w-full h-96 border-gray-300 mb-4 sm:mb-0;
+}
+.item:nth-child(3n + 1) {
+	@apply col-span-2;
+}
+.item:nth-child(5) {
+	@apply col-span-2;
+}
+.link {
+	@apply text-gray-700 font-bold  block transition-all;
+}
+.card {
+	@apply overflow-hidden w-full h-full  top-0 right-0 left-0 relative rounded-lg;
+}
+.image {
+	@apply w-full h-96 overflow-hidden object-cover;
+}
+.name {
+	@apply text-3xl absolute z-10 top-0 bg-gray-800 bg-opacity-50 text-white h-full w-full flex justify-center items-center text-center;
+}

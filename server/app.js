@@ -1,6 +1,13 @@
 const express = require('express');
+const db = require('./lib/db');
+const error = require('./lib/error');
+const middlewares = require('./middleware');
+const routes = require('./routes');
 
 const app = express();
-app.get('/', (req, res) => res.json({ msg: 'hello world' }));
+db(app);
+middlewares(app);
+routes(app);
+error(app);
 
 module.exports = app;

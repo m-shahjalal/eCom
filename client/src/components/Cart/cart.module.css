@@ -1,0 +1,92 @@
+.cart {
+	@apply mx-auto mt-12 flex justify-center items-center flex-col pb-32;
+	max-width: 1100px;
+	width: 100%;
+}
+.head {
+	@apply text-3xl text-center pb-4;
+}
+.link {
+	@apply border-b text-center mb-16;
+	border-color: #56b280;
+	color: #56b280;
+}
+.table {
+	@apply w-full;
+}
+.tHeader {
+	@apply font-bold border-b-2 h-12 text-left mx-4 grid grid-cols-2 md:grid-cols-7;
+}
+.headOne {
+	@apply col-span-4;
+}
+.headerFour {
+	@apply hidden md:block;
+}
+.row {
+	@apply border-b-2 flex items-center md:items-stretch md:justify-between gap-2 flex-col md:flex-row m-auto pb-4;
+	transition: all 0.4s ease;
+}
+.row:hover {
+	@apply bg-gray-200 rounded-md;
+}
+
+.product {
+	@apply flex justify-start items-center flex-1;
+}
+.imageDiv {
+	width: 160px;
+	height: 130px;
+	@apply flex justify-center items-center p-2;
+}
+.image {
+	@apply h-3/4;
+}
+
+.additional {
+	@apply flex h-full justify-between items-center flex-1 text-lg w-72 md:mt-12;
+}
+.center {
+	@apply text-center text-xs text-gray-500;
+}
+.price {
+	@apply text-lg flex-1 text-center;
+}
+.quantity {
+	@apply flex-1 w-max;
+}
+.counter {
+	@apply w-max border;
+	border-color: #56b280;
+}
+.total {
+	@apply flex-1;
+}
+.sign {
+	@apply px-3 hover:text-red-600 cursor-pointer;
+}
+
+.right {
+	@apply flex flex-col justify-center items-start flex-1;
+}
+.remove {
+	@apply py-1 text-xs mt-1;
+	color: #56b280;
+	border-color: #56b28033;
+}
+.bottom {
+	@apply block sm:flex justify-end w-full p-4 my-7 items-center h-full;
+}
+.button {
+	@apply rounded px-10 text-white ml-8 py-2;
+	background: #56b280;
+}
+.amount {
+	@apply mx-8 my-4;
+}
+.amountRow {
+	@apply flex justify-between w-full;
+}
+.condition {
+	@apply text-gray-400;
+}

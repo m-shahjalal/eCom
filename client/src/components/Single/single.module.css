@@ -1,0 +1,65 @@
+.single {
+	max-width: 1100px;
+	@apply mx-auto p-4 mt-16 pt-12 pb-28 min-h-screen flex flex-col justify-center items-center;
+}
+.row {
+	@apply flex justify-center items-center;
+}
+.col {
+	@apply flex-1 p-4;
+}
+.imageDiv {
+	height: 433px;
+	@apply flex justify-center items-center mb-4;
+}
+.image {
+	@apply h-3/4;
+}
+.lead {
+	@apply text-center px-5 mb-4 text-lg;
+}
+.delivery {
+	color: #56b280;
+	text-align: center;
+}
+.emo {
+	@apply text-lg pr-1;
+}
+.category {
+	@apply text-base mb-3 text-gray-600;
+}
+.innerRow {
+	@apply block md:flex justify-between;
+}
+.innerCol {
+	@apply block flex-1;
+}
+.price {
+	@apply text-3xl mb-6 mt-4;
+	color: #56b280;
+}
+.counter {
+	@apply border w-max;
+	border-color: #56b280;
+}
+.plus,
+.minus {
+	@apply mx-3 cursor-pointer hover:text-red-600;
+}
+.button {
+	@apply flex justify-center items-center my-4 w-full py-2 text-white rounded;
+	background: #56b280;
+}
+.buttonText {
+	@apply pl-2;
+}
+.disc {
+	@apply mt-14 text-gray-600;
+	line-height: 28px;
+}
+.alert {
+	@apply text-red-600 text-center;
+}
+.loading {
+	@apply text-3xl text-center h-full;
+}

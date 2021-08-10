@@ -1,0 +1,67 @@
+.order {
+	max-width: 800px;
+	@apply mx-auto mt-20 border-2 rounded-lg p-6;
+}
+.shipMethod {
+	max-width: 800px;
+	@apply border-2 rounded-lg flex justify-between p-4 mx-auto;
+}
+.contactTo {
+	@apply flex justify-between items-center border-b;
+}
+.contactTo:last-child {
+	@apply border-none;
+}
+
+.orderCol {
+	@apply p-3;
+}
+
+.editBtn {
+	color: #56b280;
+	@apply text-xs;
+}
+.lead {
+	max-width: 800px;
+	@apply m-auto text-2xl pb-5 mt-12 text-center;
+}
+.bottomRow {
+	max-width: 800px;
+	@apply mx-auto border-2 rounded-lg p-6;
+}
+.headRow {
+	@apply flex flex-col gap-y-4;
+}
+.cartItem {
+	@apply flex justify-between items-center w-full border-b p-3 shadow-md rounded-md;
+}
+.headCol {
+	@apply flex justify-between items-center border-b pb-2;
+}
+.headItem {
+	@apply font-semibold px-4;
+}
+.total {
+	@apply flex justify-between items-center  my-4 text-gray-100 p-4 rounded-md flex-col;
+	background: #56b280;
+}
+.totalFlex {
+	@apply flex justify-between items-center mb-4 w-full px-2 pb-1;
+}
+.totalFlex:last-child {
+	@apply border-b-0 -mt-1 border-t pt-1 text-2xl font-semibold;
+}
+.innerCol {
+	@apply px-2;
+}
+.btnDiv {
+	max-width: 800px;
+	@apply flex justify-between gap-4 mx-auto mt-6 w-full mb-10;
+}
+.button {
+	background-color: #56b280;
+	@apply uppercase text-sm font-medium text-white w-full border-none outline-none cursor-pointer rounded-md p-3 px-5 flex-1 text-center;
+}
+.loadingDiv {
+	@apply flex justify-center items-center gap-3;
+}

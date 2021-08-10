@@ -1,0 +1,48 @@
+.feature {
+	min-height: 650px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	background: #f7f8fa;
+}
+
+.row {
+	max-width: 1100px;
+	@apply block md:flex mx-auto justify-around h-full items-center;
+}
+.col {
+	@apply flex-1 p-4 mx-4 mb-5;
+}
+.head {
+	@apply text-4xl mb-4 pr-4;
+}
+.text {
+	@apply mb-10;
+	color: #56b280;
+}
+.bold {
+	@apply font-bold mx-1;
+}
+.list {
+	@apply flex flex-col text-left mb-16;
+}
+.item {
+	@apply mb-2;
+}
+.item > svg {
+	@apply inline;
+}
+.button {
+	@apply h-10 rounded text-white;
+	background-color: #56b280;
+	padding: 7px 30px;
+}
+.image {
+	max-width: 540px;
+	width: 100%;
+	height: 380px;
+	overflow: hidden;
+	object-fit: cover;
+	border-radius: 4px;
+	box-shadow: 0px 4px 94px rgba(123, 123, 123, 0.35);
+	margin: auto;
+}

@@ -1,0 +1,41 @@
+.about {
+	@apply mt-16 flex flex-col;
+}
+.lead {
+	@apply h-20 my-16 flex justify-center items-center text-5xl;
+}
+.container {
+	max-width: 1100px;
+	@apply m-auto;
+}
+.row,
+.agenda {
+	@apply flex flex-col-reverse md:flex justify-center items-center py-10 md:flex-row-reverse;
+}
+.col {
+	@apply flex-1 p-4 overflow-hidden rounded-md my-8;
+	max-height: 400px;
+}
+.head {
+	@apply px-4 m-auto text-left text-2xl mb-2;
+	color: #56b280;
+}
+.paragraph {
+	max-width: 1100px;
+	@apply m-auto  text-gray-600 p-4;
+	line-height: 28px;
+}
+.image {
+	@apply bg-black opacity-75 h-full object-cover overflow-hidden;
+}
+.list {
+	@apply p-4;
+}
+.item {
+	@apply pb-4 text-gray-600 text-right;
+}
+.item::before {
+	content: '🌿';
+	padding-right: 5px;
+	font-size: large;
+}
