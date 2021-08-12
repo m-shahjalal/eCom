@@ -78,7 +78,7 @@ const Single = () => {
 									{
 										<Star
 											name='rate'
-											value={4}
+											value={product.product.rating}
 											starColor='#56b280'
 											emptyStarColor='#242423'
 											editing={false}

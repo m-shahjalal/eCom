@@ -13,10 +13,10 @@ const Table = ({ orders }) => {
 	return (
 		<div className={classes.tableRow}>
 			<div className={classes.tableContainer}>
-				{orders.list.length > 0 && (
+				{orders.list.length > 0 ? (
 					<h3 className={classes.lead}>My orders</h3>
-				)}
-				{orders.loading && (
+				) : null}
+				{orders && orders.loading ? (
 					<div
 						className='loader'
 						style={{
@@ -25,9 +25,9 @@ const Table = ({ orders }) => {
 							borderBottomColor: '#4d4d4d33',
 							borderLeftColor: 'white',
 						}}></div>
-				)}
+				) : null}
 				<table className={classes.table}>
-					{orders.list.length > 0 ? (
+					{orders && orders.list && orders.list.length > 0 ? (
 						<thead>
 							<tr className={classes.innerRow}>
 								<th className={classes.tableHead}>ID</th>
@@ -46,64 +46,67 @@ const Table = ({ orders }) => {
 						</div>
 					)}
 					<tbody>
-						{orders.list?.map((elem) => (
-							<Fragment key={elem._id}>
-								<tr className={classes.innerRow}>
-									<td className={classes.tableData}>
-										{elem._id}
-									</td>
-									<td className={classes.tableData}>
-										{elem.createdAt.slice(0, 10)}
-									</td>
-									<td className={classes.tableData}>
-										${elem.amount / 100}
-									</td>
-									<td className={classes.tableData}>
-										{elem.isDelivered ? (
-											<svg
-												className='w-8 h-8'
-												fill='#56b280'
-												stroke='#56b280'
-												viewBox='0 0 24 24'
-												xmlns='http://www.w3.org/2000/svg'>
-												<path
-													stroke='#ffffff'
-													strokeLinecap='round'
-													strokeLinejoin='round'
-													strokeWidth={2}
-													d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
-												/>
-											</svg>
-										) : (
-											<svg
-												className='w-8 h-8'
-												fill='#ff0000'
-												stroke='#ff0000'
-												viewBox='0 0 24 24'
-												xmlns='http://www.w3.org/2000/svg'>
-												<path
-													stroke='#ffffff'
-													strokeLinecap='round'
-													strokeLinejoin='round'
-													strokeWidth={2}
-													d='M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z'
-												/>
-											</svg>
-										)}
-									</td>
-									<td className={classes.tableData}>
-										<Link
-											to={{
-												pathname: `/orders/${elem._id}`,
-												state: elem,
-											}}
-											className={classes.detailButton}>
-											details
-										</Link>
-									</td>
-								</tr>
-							</Fragment>
-						))}
+						{orders &&
+							orders.list?.map((elem) => (
+								<Fragment key={elem._id}>
+									<tr className={classes.innerRow}>
+										<td className={classes.tableData}>
+											{elem._id}
+										</td>
+										<td className={classes.tableData}>
+											{elem.createdAt.slice(0, 10)}
+										</td>
+										<td className={classes.tableData}>
+											${elem.amount / 100}
+										</td>
+										<td className={classes.tableData}>
+											{elem.isDelivered ? (
+												<svg
+													className='w-8 h-8'
+													fill='#56b280'
+													stroke='#56b280'
+													viewBox='0 0 24 24'
+													xmlns='http://www.w3.org/2000/svg'>
+													<path
+														stroke='#ffffff'
+														strokeLinecap='round'
+														strokeLinejoin='round'
+														strokeWidth={2}
+														d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+													/>
+												</svg>
+											) : (
+												<svg
+													className='w-8 h-8'
+													fill='#ff0000'
+													stroke='#ff0000'
+													viewBox='0 0 24 24'
+													xmlns='http://www.w3.org/2000/svg'>
+													<path
+														stroke='#ffffff'
+														strokeLinecap='round'
+														strokeLinejoin='round'
+														strokeWidth={2}
+														d='M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z'
+													/>
+												</svg>
+											)}
+										</td>
+										<td className={classes.tableData}>
+											<Link
+												to={{
+													pathname: `/orders/${elem._id}`,
+													state: elem,
+												}}
+												className={
+													classes.detailButton
+												}>
+												details
+											</Link>
+										</td>
+									</tr>
+								</Fragment>
+							))}
 					</tbody>
 				</table>
 			</div>

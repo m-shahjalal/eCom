@@ -1,4 +1,5 @@
 import {
+	CLEAR_CATEGORY,
 	PRODUCT_CATEGORY_FAIL,
 	PRODUCT_CATEGORY_REQUEST,
 	PRODUCT_CATEGORY_SUCCESS,
@@ -87,6 +88,8 @@ reducer.getCategoryProducts = (state = { products: [] }, action) => {
 			return { ...state, loading: false, products: action.payload };
 		case PRODUCT_CATEGORY_FAIL:
 			return { ...state, loading: false, error: action.payload };
+		case CLEAR_CATEGORY:
+			return { products: [] };
 		default:
 			return state;
 	}

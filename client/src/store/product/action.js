@@ -1,5 +1,6 @@
 import api from '../../api/products';
 import {
+	CLEAR_CATEGORY,
 	PRODUCT_CATEGORY_FAIL,
 	PRODUCT_CATEGORY_REQUEST,
 	PRODUCT_CATEGORY_SUCCESS,
@@ -82,7 +83,20 @@ export const reviewCreate = (id, info) => async (dispatch) => {
 			});
 		}
 	} catch (err) {
-		console.log(err);
 		dispatch({ type: PRODUCT_CREATE_REVIEW_FAIL, payload: err.message });
 	}
+};
+
+export const searchProducts = (keywords) => async (dispatch) => {
+	try {
+		dispatch({ type: PRODUCT_CATEGORY_REQUEST });
+		const res = await api.searchProducts(keywords);
+		dispatch({ type: PRODUCT_CATEGORY_SUCCESS, payload: res.data });
+	} catch (error) {
+		dispatch({ type: PRODUCT_CATEGORY_FAIL, payload: error.message });
+	}
+};
+
+export const clearCategory = () => {
+	return { type: CLEAR_CATEGORY };
 };

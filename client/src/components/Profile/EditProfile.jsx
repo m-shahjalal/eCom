@@ -1,5 +1,4 @@
 import { Field, Form, Formik } from 'formik';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
@@ -51,7 +50,7 @@ const EditProfile = () => {
 	state === undefined && history.goBack();
 	const dispatch = useDispatch();
 	const userDetails = useSelector((state) => state.userDetails);
-	const [loading, setLoading] = useState(false);
+	const userUpdate = useSelector((state) => state.userUpdate);
 	const initialValues = {
 		name: state?.name || '',
 		tagline: state?.tagline || '',
@@ -63,16 +62,16 @@ const EditProfile = () => {
 		avatar: '',
 	};
 	const submitHandler = (values) => {
-		setLoading(true);
 		const data = new FormData();
 		for (const key in values) {
 			data.append(key, values[key]);
 		}
 		dispatch(updateUser(state.id, data));
 		dispatch(getUserDetails(state.id));
-		setLoading(false);
 		userDetails.profile && history.push('/profile');
 	};
+
+	userUpdate.success && history.push('/profile');
 
 	return (
 		<div className={classes.edit}>
@@ -253,7 +252,7 @@ const EditProfile = () => {
 								)}
 							</label>
 							<button type='submit' className={classes.submit}>
-								{loading ? (
+								{userUpdate.loading ? (
 									<div className='loader-sm'></div>
 								) : (
 									'continue'

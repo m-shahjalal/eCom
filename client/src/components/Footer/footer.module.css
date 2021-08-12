@@ -18,10 +18,10 @@
 	@apply self-start px-7 col-span-3 mb-10 p-4;
 }
 .imageDiv {
-	@apply w-40 mb-5;
+	@apply mb-5;
 }
 .image {
-	@apply w-full;
+	@apply w-40 mb-4;
 }
 .col2 {
 	@apply flex justify-between col-span-4 mb-10 p-4;

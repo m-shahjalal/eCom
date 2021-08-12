@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const reviewSchema = Schema(
 	{
 		name: { type: String },
-		rating: { type: [Number, 'give a number'], required: true },
+		rating: { type: Number, required: true },
 		comment: { type: String },
 		user: {
 			type: Schema.Types.ObjectId,

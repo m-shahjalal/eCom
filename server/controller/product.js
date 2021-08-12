@@ -54,6 +54,16 @@ product.getProducts = async (req, res, next) => {
 	}
 };
 
+product.getSearchProducts = async (req, res, next) => {
+	const keyword = { name: { $regex: String(req.query.q), $options: 'i' } };
+	try {
+		const products = await Product.find({ ...keyword });
+		res.status(200).json(products);
+	} catch (error) {
+		next(error);
+	}
+};
+
 product.getSingleProduct = async (req, res, next) => {
 	const { id } = req.params;
 	try {
@@ -66,7 +76,8 @@ product.getSingleProduct = async (req, res, next) => {
 
 product.popular = async (req, res, next) => {
 	try {
-		res.json(await Product.find().limit(4));
+		const product = await Product.find({}).sort({ rating: -1 }).limit(4);
+		res.status(200).json(product);
 	} catch (error) {
 		next(error);
 	}
@@ -107,9 +118,11 @@ product.createProductReview = async (req, res, next) => {
 		product.reviews.push(review);
 		product.numReviews = product.reviews.length;
 		product.rating =
-			product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-			product.reviews.length;
-		const result = await product.save();
+			product.reviews.reduce(
+				(acc, item) => parseInt(item.rating) + acc,
+				0
+			) / product.reviews.length;
+		await product.save();
 		res.status(201).json({ success: true });
 	} catch (error) {
 		console.error(error);

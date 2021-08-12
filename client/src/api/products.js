@@ -21,4 +21,8 @@ products.getPopularProduct = () => {
 products.createReview = (id, info) => {
 	return axios.post(`products/${id}/review`, info);
 };
+
+products.searchProducts = (info) => {
+	return axios.get(`/products/search?q=${info}`);
+};
 export default products;

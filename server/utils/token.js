@@ -35,7 +35,6 @@ auth.verifyToken = (token) => {
 };
 
 auth.errorHandler = (e) => {
-	console.log('this is error handler >>>', e);
 	let err = {
 		error: '',
 		status: '',

@@ -10,9 +10,7 @@ function validateEmail(email) {
 const Contact = () => {
 	const formik = useFormik({
 		initialValues: { name: '', email: '', message: '' },
-		onSubmit: (value) => {
-			console.log(value);
-		},
+		onSubmit: (value) => {},
 		validate: (value) => {
 			const error = {};
 			if (!value.name) error.name = 'name is required';

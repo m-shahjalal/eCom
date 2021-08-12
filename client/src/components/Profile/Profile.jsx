@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import image from '../../images/notUser.svg';
-import { getUserDetails } from '../../store/user/action';
+import { getUserDetails, logout } from '../../store/user/action';
 import classes from './profile.module.css';
 import Table from './Table';
 
@@ -19,6 +19,10 @@ const Profile = () => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 		dispatch(getUserDetails(id));
 	}, [dispatch, history, id]);
+
+	const logOut = () => {
+		dispatch(logout());
+	};
 
 	return (
 		<div className={classes.profile}>
@@ -39,6 +43,11 @@ const Profile = () => {
 								<h3 className={classes.tagline}>
 									{profile.tagline}
 								</h3>
+								<button
+									className={classes.userLogout}
+									onClick={logOut}>
+									logout
+								</button>
 							</div>
 						</div>
 					</div>
@@ -125,7 +134,9 @@ const Profile = () => {
 							className={classes.createButton}>
 							create account
 						</Link>
-						<button className={classes.logoutButton}>
+						<button
+							onClick={logOut}
+							className={classes.logoutButton}>
 							log out
 						</button>
 					</div>

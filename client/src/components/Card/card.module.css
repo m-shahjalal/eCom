@@ -22,8 +22,14 @@
 	@apply text-center mx-3;
 }
 .bottom {
-	@apply flex py-5 justify-end w-full p-5;
+	@apply flex py-5 justify-between w-full p-5;
 	color: #56b280;
+}
+.review {
+	@apply flex justify-center items-center;
+}
+.right {
+	@apply flex;
 }
 .cart {
 	transition: all 0.6s ease;

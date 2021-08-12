@@ -136,7 +136,7 @@ user.editUser = async (req, res, next) => {
 				name,
 				tagline,
 				contact,
-				thumb: url,
+				thumb: image,
 				email: user.email,
 				address: {
 					line: address,

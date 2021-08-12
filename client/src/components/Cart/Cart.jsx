@@ -14,7 +14,7 @@ const Cart = () => {
 	const cart = useSelector((state) => state.cart.items);
 	const dispatch = useDispatch();
 	const [total, setTotal] = useState(0);
-	const user = JSON.parse(localStorage.getItem('user')) || false;
+	const user = useSelector((state) => state.userLogin);
 	const isLoggedIn = user ? user.isLoggedIn : false;
 	const history = useHistory();
 
