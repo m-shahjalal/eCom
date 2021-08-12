@@ -117,7 +117,7 @@ const Footer = () => {
 						&copy; All rights reserved
 					</div>
 					<div className={classes.design}>
-						Designed with 💛 by
+						Designed with ❤️ by
 						<a
 							className={classes.externalLink}
 							rel='noreferrer'

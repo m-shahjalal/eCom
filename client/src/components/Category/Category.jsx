@@ -2,15 +2,10 @@ import { Link } from 'react-router-dom';
 import gift from '../../images/category/gift.jpeg';
 import indoorOutdoor from '../../images/category/indoor-outdoor.jpg';
 import indoor from '../../images/category/indoor.jpg';
-import jewelry from '../../images/category/jewelry.jpg';
 import outdoor from '../../images/category/outdoor.png';
 import classes from './category.module.css';
 
 const category = [
-	{
-		name: 'All Categories',
-		img: jewelry,
-	},
 	{
 		name: 'Indoor',
 		img: indoor,
@@ -26,10 +21,6 @@ const category = [
 	{
 		name: 'Gift',
 		img: gift,
-	},
-	{
-		name: 'Others',
-		img: outdoor,
 	},
 ];
 

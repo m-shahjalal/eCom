@@ -4,13 +4,17 @@ import Nav from '../components/Nav/Nav';
 import AboutScreen from '../screens/AboutScreen';
 import Address from '../screens/Address';
 import CartScreen from '../screens/CartScreen';
+import CategoryItems from '../screens/CategoryItems';
 import CategoryScreen from '../screens/CategoryScreen';
 import ContactScreen from '../screens/ContactScreen';
 import HomeScreen from '../screens/HomeScreen';
 import ItemScreen from '../screens/ItemScreen';
 import LoginScreen from '../screens/LoginScreen';
+import OrderDetail from '../screens/OrderDetail';
 import PaymentScreen from '../screens/PaymentScreen';
 import PlaceOrderScreen from '../screens/PlaceOrderScreen';
+import ProfileEdit from '../screens/ProfileEdit';
+import profileScreen from '../screens/profileScreen';
 import ShippingScreen from '../screens/ShippingScreen';
 import SignScreen from '../screens/SignupScreen';
 import ThanksScreen from '../screens/ThanksScreen';
@@ -37,6 +41,14 @@ const Router = () => {
 					<Route exact path='/cart' component={CartScreen} />
 					<Route exact path='/about' component={AboutScreen} />
 					<Route exact path='/contact-us' component={ContactScreen} />
+					<Route exact path='/profile' component={profileScreen} />
+					<Route exact path='/profile/edit' component={ProfileEdit} />
+					<Route exact path='/orders/:id' component={OrderDetail} />
+					<Route
+						exact
+						path='/category/:category'
+						component={CategoryItems}
+					/>
 					<Footer />
 				</div>
 				<Route component={Error} />

@@ -40,7 +40,7 @@
 	@apply py-3 font-light;
 }
 .bottomContainer {
-	@apply bg-white text-gray-600 m-auto h-16;
+	@apply text-gray-600 m-auto h-16;
 	max-width: 1100px;
 }
 .bottom {

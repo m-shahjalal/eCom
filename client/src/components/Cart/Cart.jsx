@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import {
+	clearCart,
 	decrementItem,
 	incrementItem,
 	removeFromCart,
@@ -26,6 +27,10 @@ const Cart = () => {
 					alert: 'Log in or singup to checkout',
 			  });
 	};
+	const clearCartButton = () => {
+		dispatch(clearCart());
+		history.push('/');
+	};
 
 	useEffect(() => window.scrollTo({ behavior: 'smooth', top: 0 }), []);
 	useEffect(() => {
@@ -42,9 +47,15 @@ const Cart = () => {
 			<h1 className={classes.head}>
 				{cart.length > 0 ? 'Your cart items' : 'No items in the cart!'}
 			</h1>
-			<Link to='/' className={classes.link}>
-				Back to shopping
-			</Link>
+			{cart.length > 0 ? (
+				<button onClick={clearCartButton} className={classes.link}>
+					Clear cart
+				</button>
+			) : (
+				<Link to='/' className={classes.link}>
+					Back to shopping
+				</Link>
+			)}
 
 			<div className={classes.table}>
 				{cart.map((item) => (

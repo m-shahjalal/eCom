@@ -73,4 +73,14 @@ product.popular = async (req, res, next) => {
 	}
 };
 
+product.categoryProducts = async (req, res, next) => {
+	const { category } = req.params;
+	try {
+		const items = await Product.find({ category: category });
+		res.status(200).json(items);
+	} catch (error) {
+		next(error.message);
+	}
+};
+
 module.exports = product;

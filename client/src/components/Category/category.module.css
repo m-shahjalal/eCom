@@ -1,5 +1,5 @@
 .categoryContainer {
-	@apply max-w-3xl m-auto;
+	@apply max-w-3xl m-auto pb-16;
 }
 .category {
 	@apply bg-white border shadow-lg mx-8 block sm:grid grid-cols-3 gap-4 p-4 rounded-lg;

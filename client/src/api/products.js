@@ -10,8 +10,8 @@ products.getSingleProduct = (id) => {
 	return axios.get(`/products/${id}`);
 };
 
-products.getCategory = () => {
-	return axios.get(`/products/category`);
+products.getCategory = (category) => {
+	return axios.get(`products/category/${category}`);
 };
 
 products.getPopularProduct = () => {

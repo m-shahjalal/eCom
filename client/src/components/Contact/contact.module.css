@@ -45,3 +45,6 @@ textarea:focus {
 	@apply flex justify-center items-center w-full mx-auto text-white border-0 py-2 px-8 focus:outline-none  rounded text-lg;
 	background: #56b280;
 }
+.error {
+	@apply text-xs text-red-600 mt-1;
+}

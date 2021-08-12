@@ -1,4 +1,7 @@
 import {
+	PRODUCT_CATEGORY_FAIL,
+	PRODUCT_CATEGORY_REQUEST,
+	PRODUCT_CATEGORY_SUCCESS,
 	PRODUCT_CREATE_REVIEW_FAIL,
 	PRODUCT_CREATE_REVIEW_REQUEST,
 	PRODUCT_CREATE_REVIEW_RESET,
@@ -12,9 +15,6 @@ import {
 	PRODUCT_POPULAR_FAIL,
 	PRODUCT_POPULAR_REQUEST,
 	PRODUCT_POPULAR_SUCCESS,
-	PRODUCT_TOP_FAIL,
-	PRODUCT_TOP_REQUEST,
-	PRODUCT_TOP_SUCCESS,
 } from './types';
 
 const reducer = {};
@@ -66,19 +66,6 @@ reducer.reviewCreateReducer = (state = {}, action) => {
 	}
 };
 
-reducer.productTopRatedReducer = (state = { products: [] }, action) => {
-	switch (action.type) {
-		case PRODUCT_TOP_REQUEST:
-			return { loading: true, products: [] };
-		case PRODUCT_TOP_SUCCESS:
-			return { loading: false, products: action.payload };
-		case PRODUCT_TOP_FAIL:
-			return { loading: false, error: action.payload };
-		default:
-			return state;
-	}
-};
-
 reducer.popularProducts = (state = { products: [] }, action) => {
 	switch (action.type) {
 		case PRODUCT_POPULAR_REQUEST:
@@ -92,4 +79,16 @@ reducer.popularProducts = (state = { products: [] }, action) => {
 	}
 };
 
+reducer.getCategoryProducts = (state = { products: [] }, action) => {
+	switch (action.type) {
+		case PRODUCT_CATEGORY_REQUEST:
+			return { products: [], loading: true };
+		case PRODUCT_CATEGORY_SUCCESS:
+			return { ...state, loading: false, products: action.payload };
+		case PRODUCT_CATEGORY_FAIL:
+			return { ...state, loading: false, error: action.payload };
+		default:
+			return state;
+	}
+};
 export default reducer;

@@ -54,3 +54,10 @@
 	margin-bottom: 10px;
 	width: 100px;
 }
+.categoryLead {
+	@apply py-32 text-3xl text-center text-gray-700 w-full px-10;
+}
+.categoryGreen {
+	@apply font-semibold;
+	color: #56b280;
+}

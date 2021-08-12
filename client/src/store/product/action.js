@@ -1,5 +1,8 @@
 import api from '../../api/products';
 import {
+	PRODUCT_CATEGORY_FAIL,
+	PRODUCT_CATEGORY_REQUEST,
+	PRODUCT_CATEGORY_SUCCESS,
 	PRODUCT_DETAILS_FAIL,
 	PRODUCT_DETAILS_REQUEST,
 	PRODUCT_DETAILS_SUCCESS,
@@ -48,4 +51,14 @@ export const getPopularProducts = () => {
 			dispatch({ type: PRODUCT_POPULAR_FAIL, payload: e.message });
 		}
 	};
+};
+
+export const getCategoryProducts = (category) => async (dispatch) => {
+	try {
+		dispatch({ type: PRODUCT_CATEGORY_REQUEST });
+		const { data } = await api.getCategory(category);
+		dispatch({ type: PRODUCT_CATEGORY_SUCCESS, payload: data });
+	} catch (error) {
+		dispatch({ type: PRODUCT_CATEGORY_FAIL, payload: error.message });
+	}
 };

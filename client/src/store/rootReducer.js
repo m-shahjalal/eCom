@@ -8,12 +8,14 @@ import wishReducer from './wish/reducer';
 const rootReducer = combineReducers({
 	products: productReducer.productList,
 	product: productReducer.productDetails,
+	category: productReducer.getCategoryProducts,
 	popular: productReducer.popularProducts,
 	userLogin: userReducer.loginReducer,
 	userSignup: userReducer.registerReducer,
 	userDetails: userReducer.userDetailsReducer,
 	userUpdate: userReducer.updateReducer,
 	orderCreate: orderReducer.orderCreateReducer,
+	orders: orderReducer.getOrders,
 	cart: cartReducer,
 	wish: wishReducer,
 });

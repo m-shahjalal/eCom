@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,7 +10,14 @@ html,
 body {
 	font-family: Poppins, Arial, Helvetica, sans-serif;
 }
-
+.logo {
+	font-family: 'Josefin Sans', sans-serif;
+	color: #56b280;
+	font-size: 40px;
+	letter-spacing: -2px;
+	line-height: normal;
+	text-align: center;
+}
 .loader,
 .loader:after {
 	border-radius: 50%;

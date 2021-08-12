@@ -78,7 +78,7 @@ actions.logout = () => (dispatch) => {
 	document.location.href = '/login';
 };
 
-actions.userDetails = (id) => async (dispatch) => {
+actions.getUserDetails = (id) => async (dispatch) => {
 	try {
 		dispatch({ type: USER_DETAILS_REQUEST });
 		const { data } = await userApi.userDetails(id);
