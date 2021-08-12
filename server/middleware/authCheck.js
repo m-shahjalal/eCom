@@ -9,9 +9,7 @@ module.exports = async (req, res, next) => {
 	if (!token) return res.status(409).json({ error: 'unauthorized user' });
 	try {
 		const { email } = await verifyToken(token);
-		const user = await User.findOne({ email }).select(
-			'-password -name -__v'
-		);
+		const user = await User.findOne({ email }).select('-password -__v');
 		if (!user) {
 			return res.json({ message: 'Please login first' });
 		} else {

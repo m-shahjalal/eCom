@@ -39,7 +39,6 @@ orderReducer.getOrders = (state = { list: [] }, action) => {
 		case ORDER_LIST_REQUEST:
 			return { ...state, loading: true };
 		case ORDER_LIST_SUCCESS:
-			console.log(action.payload);
 			return { ...state, loading: false, list: action.payload };
 		case ORDER_LIST_FAIL:
 			return { ...state, loading: false, error: action.payload };

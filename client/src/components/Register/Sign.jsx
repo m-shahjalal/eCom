@@ -7,12 +7,14 @@ import actions from '../../store/user/action';
 import classes from './sign.module.css';
 
 const initialValues = {
+	name: '',
 	email: '',
 	password: '',
 	confirmPassword: '',
 };
 
 const validationSchema = Yup.object().shape({
+	name: Yup.string().required('Name is required'),
 	email: Yup.string().email('invalid email').required('email is required'),
 	password: Yup.string().min(6).required('password is required'),
 	confirmPassword: Yup.string()
@@ -25,9 +27,12 @@ const Sign = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const userSignup = useSelector((state) => state.userSignup);
+	const userLogin = useSelector((state) => state.userLogin);
 	const submitHandler = (values) => {
 		dispatch(actions.register(values));
 	};
+
+	userLogin?.user?.id && history.push('/profile');
 
 	useEffect(() => {
 		if (userSignup?.user?.email) {
@@ -56,6 +61,25 @@ const Sign = () => {
 						validationSchema={validationSchema}>
 						{({ errors, touched }) => (
 							<Form>
+								<div className={classes.col}>
+									<label
+										htmlFor='name'
+										className={classes.label}>
+										name
+									</label>
+									<Field
+										autoComplete='false'
+										type='name'
+										id='name'
+										name='name'
+										className={classes.input}
+									/>
+									{touched.name && errors.name && (
+										<div className={classes.error}>
+											{errors.name}
+										</div>
+									)}
+								</div>
 								<div className={classes.col}>
 									<label
 										htmlFor='email'

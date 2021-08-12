@@ -1,0 +1,53 @@
+.review {
+	@apply my-4 pt-7 w-full bg-white rounded-md p-4;
+}
+.lead {
+	@apply text-xl text-center my-4;
+}
+.inputBox {
+	@apply p-3 pb-5 border-b-4;
+}
+.form {
+	@apply grid grid-cols-1 sm:grid-cols-4 sm:gap-3 gap-y-4;
+}
+.innerRow1 {
+	@apply col-span-3 h-32;
+}
+.innerRow2 {
+	@apply flex flex-col gap-4 h-32;
+}
+.textarea,
+.input,
+.submit {
+	@apply rounded border-2 w-full h-full;
+	border-color: #56b280;
+}
+.textarea {
+	@apply p-2 outline-white placeholder-green-600;
+}
+.input,
+.submit {
+	@apply text-white;
+	background-color: #56b280;
+}
+.error {
+	@apply text-xs text-red-600 text-center;
+}
+.feedBackError {
+	@apply text-center text-red-600 mt-4;
+}
+.card {
+	@apply p-4 border-t;
+}
+.cardTop {
+	@apply flex gap-4  items-center;
+}
+.reviewer {
+	@apply text-xl font-semibold;
+}
+.rating {
+	@apply flex justify-center items-center;
+}
+.timeStamp {
+	@apply text-xs text-gray-500;
+}

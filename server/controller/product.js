@@ -27,7 +27,6 @@ product.addProduct = async (req, res, next) => {
 
 		res.json({ created: true, product });
 	} catch (error) {
-		console.log(error);
 		next(error);
 	}
 };
@@ -83,4 +82,38 @@ product.categoryProducts = async (req, res, next) => {
 	}
 };
 
+product.createProductReview = async (req, res, next) => {
+	const { rate, text } = req.body;
+	const { id } = req.params;
+	try {
+		const product = await Product.findById(req.params.id);
+
+		const alreadyReviewed = product.reviews.find(
+			(r) => r.user.toString() === req.user._id.toString()
+		);
+		if (alreadyReviewed) {
+			return res.status(400).json({
+				error: 'Product already reviewed',
+				success: false,
+			});
+		}
+
+		const review = {
+			user: req.user._id,
+			name: req.user.name,
+			rating: parseInt(rate),
+			comment: text,
+		};
+		product.reviews.push(review);
+		product.numReviews = product.reviews.length;
+		product.rating =
+			product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+			product.reviews.length;
+		const result = await product.save();
+		res.status(201).json({ success: true });
+	} catch (error) {
+		console.error(error);
+		next(error);
+	}
+};
 module.exports = product;

@@ -17,4 +17,8 @@ products.getCategory = (category) => {
 products.getPopularProduct = () => {
 	return axios.get(`/products/popular`);
 };
+
+products.createReview = (id, info) => {
+	return axios.post(`products/${id}/review`, info);
+};
 export default products;

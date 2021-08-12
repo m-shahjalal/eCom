@@ -6,10 +6,11 @@ import { getUserDetails } from '../../store/user/action';
 import classes from './profile.module.css';
 import Table from './Table';
 
-const Profile = ({ orders }) => {
+const Profile = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const userDetails = useSelector((state) => state.userDetails);
+	const orders = useSelector((state) => state.orders);
 	const { profile } = userDetails;
 	const user = JSON.parse(localStorage.getItem('user')) || {};
 	const { id } = user;
@@ -131,7 +132,7 @@ const Profile = ({ orders }) => {
 				</div>
 			)}
 			{/* Order sections */}
-			<Table />
+			<Table orders={orders} />
 		</div>
 	);
 };

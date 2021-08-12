@@ -5,7 +5,7 @@ import Card from '../Card/Card';
 import classes from './popular.module.css';
 
 const Popular = () => {
-	const popular = useSelector((state) => state.popular);
+	const popular = useSelector((state) => state.popular) || {};
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getPopularProducts());
@@ -17,14 +17,14 @@ const Popular = () => {
 				Our top selling product that you may like
 			</p>
 			<div className={classes.row}>
-				{popular.error ? (
+				{popular?.error ? (
 					<div className={classes.error}> 🏓 {popular.error}</div>
-				) : popular.loading ? (
+				) : popular?.loading ? (
 					<div className={classes.loading}>
 						<div className='loader'></div>
 					</div>
 				) : (
-					popular.products?.map((item) => (
+					popular?.products?.map((item) => (
 						<Card key={item._id} product={item} />
 					))
 				)}

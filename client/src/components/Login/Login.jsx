@@ -26,7 +26,7 @@ const Login = () => {
 	};
 	useEffect(() => {
 		if (userLogin?.user?.email) {
-			history.push(state?.goto || '/');
+			history.push(state?.goto || '/profile');
 		}
 	}, [history, state, userLogin]);
 	return (

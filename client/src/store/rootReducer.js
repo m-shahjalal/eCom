@@ -15,6 +15,7 @@ const rootReducer = combineReducers({
 	userDetails: userReducer.userDetailsReducer,
 	userUpdate: userReducer.updateReducer,
 	orderCreate: orderReducer.orderCreateReducer,
+	productReview: productReducer.reviewCreateReducer,
 	orders: orderReducer.getOrders,
 	cart: cartReducer,
 	wish: wishReducer,

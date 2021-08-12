@@ -3,6 +3,9 @@ import {
 	PRODUCT_CATEGORY_FAIL,
 	PRODUCT_CATEGORY_REQUEST,
 	PRODUCT_CATEGORY_SUCCESS,
+	PRODUCT_CREATE_REVIEW_FAIL,
+	PRODUCT_CREATE_REVIEW_REQUEST,
+	PRODUCT_CREATE_REVIEW_SUCCESS,
 	PRODUCT_DETAILS_FAIL,
 	PRODUCT_DETAILS_REQUEST,
 	PRODUCT_DETAILS_SUCCESS,
@@ -60,5 +63,26 @@ export const getCategoryProducts = (category) => async (dispatch) => {
 		dispatch({ type: PRODUCT_CATEGORY_SUCCESS, payload: data });
 	} catch (error) {
 		dispatch({ type: PRODUCT_CATEGORY_FAIL, payload: error.message });
+	}
+};
+
+export const reviewCreate = (id, info) => async (dispatch) => {
+	try {
+		dispatch({ type: PRODUCT_CREATE_REVIEW_REQUEST });
+		const { data } = await api.createReview(id, info);
+		if (data.error) {
+			dispatch({
+				type: PRODUCT_CREATE_REVIEW_FAIL,
+				payload: data.error,
+			});
+		} else {
+			dispatch({
+				type: PRODUCT_CREATE_REVIEW_SUCCESS,
+				payload: data.success,
+			});
+		}
+	} catch (err) {
+		console.log(err);
+		dispatch({ type: PRODUCT_CREATE_REVIEW_FAIL, payload: err.message });
 	}
 };

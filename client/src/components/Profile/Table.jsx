@@ -1,19 +1,21 @@
 import { Fragment, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import actions from '../../store/order/action';
 import classes from './profile.module.css';
 
-const Table = () => {
+const Table = ({ orders }) => {
 	const dispatch = useDispatch();
-	const orders = useSelector((state) => state.orders);
+
 	useEffect(() => {
 		dispatch(actions.orders());
 	}, [dispatch]);
 	return (
 		<div className={classes.tableRow}>
 			<div className={classes.tableContainer}>
-				<h3 className={classes.lead}>My orders</h3>
+				{orders.list.length > 0 && (
+					<h3 className={classes.lead}>My orders</h3>
+				)}
 				{orders.loading && (
 					<div
 						className='loader'
@@ -25,15 +27,24 @@ const Table = () => {
 						}}></div>
 				)}
 				<table className={classes.table}>
-					<thead>
-						<tr className={classes.innerRow}>
-							<th className={classes.tableHead}>ID</th>
-							<th className={classes.tableHead}>DATE</th>
-							<th className={classes.tableHead}>TOTAL</th>
-							<th className={classes.tableHead}>DELIVERED</th>
-							<th className={classes.tableHead}>DETAILS</th>
-						</tr>
-					</thead>
+					{orders.list.length > 0 ? (
+						<thead>
+							<tr className={classes.innerRow}>
+								<th className={classes.tableHead}>ID</th>
+								<th className={classes.tableHead}>DATE</th>
+								<th className={classes.tableHead}>TOTAL</th>
+								<th className={classes.tableHead}>DELIVERED</th>
+								<th className={classes.tableHead}>DETAILS</th>
+							</tr>
+						</thead>
+					) : (
+						<div className={classes.empty}>
+							You did not order yet <br />
+							<Link className={classes.link} to='/'>
+								Buy something today
+							</Link>
+						</div>
+					)}
 					<tbody>
 						{orders.list?.map((elem) => (
 							<Fragment key={elem._id}>

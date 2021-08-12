@@ -172,3 +172,9 @@
 .detailButton {
 	@apply px-4 py-2 bg-green-600 text-white rounded-md;
 }
+.empty {
+	@apply text-white text-center text-4xl my-10;
+}
+.link {
+	@apply text-sm bg-gray-100 px-5 py-2 rounded-sm text-gray-800;
+}

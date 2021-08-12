@@ -54,11 +54,11 @@ reducer.productDetails = (state = { product: { reviews: [] } }, action) => {
 reducer.reviewCreateReducer = (state = {}, action) => {
 	switch (action.type) {
 		case PRODUCT_CREATE_REVIEW_REQUEST:
-			return { loading: true };
+			return { loading: true, success: false };
 		case PRODUCT_CREATE_REVIEW_SUCCESS:
-			return { loading: false, success: true };
+			return { loading: false, success: action.payload };
 		case PRODUCT_CREATE_REVIEW_FAIL:
-			return { loading: false, error: action.payload };
+			return { loading: false, success: false, error: action.payload };
 		case PRODUCT_CREATE_REVIEW_RESET:
 			return {};
 		default:

@@ -116,7 +116,11 @@ user.editUser = async (req, res, next) => {
 		const user = await User.findById(req.user._id);
 		if (user.profile) {
 			const profile = await Profile.findById(user.profile);
-			if (name) profile.name = name;
+			if (name) {
+				profile.name = name;
+				user.name = name;
+				await user.save();
+			}
 			if (tagline) profile.tagline = tagline;
 			if (contact) profile.contact = contact;
 			if (req.file && image) profile.thumb = image;
@@ -142,6 +146,7 @@ user.editUser = async (req, res, next) => {
 				},
 			});
 			user.profile = profile._id;
+			user.name = profile.name;
 			const result = await user.save();
 			res.status(201).json({ success: true, user: result });
 		}
