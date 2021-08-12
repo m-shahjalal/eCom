@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import { clearCart } from '../../store/cart/action';
 import actions from '../../store/order/action';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import classes from './order.module.css';
@@ -16,6 +17,7 @@ const Order = () => {
 		dispatch(
 			actions.createOrder({ items, address, payment, subTotal, tax })
 		);
+		dispatch(clearCart());
 	};
 	useEffect(() => setTax((15 / 100) * subTotal), [setTax, subTotal]);
 	useEffect(() => {
@@ -111,6 +113,9 @@ const Order = () => {
 					</div>
 				</div>
 			</div>
+			{orderCreate?.success === false && (
+				<div className={classes.error}>{orderCreate.error}</div>
+			)}
 			<div className={classes.btnDiv}>
 				<Link
 					to='/payment'

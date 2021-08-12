@@ -9,8 +9,11 @@
 		"mern",
 		"originalname",
 		"postbuild",
+		"semibold",
 		"signin",
 		"signup",
+		"singup",
+		"webp",
 		"zipcode"
 	],
 	"git.ignoreLimitWarning": true

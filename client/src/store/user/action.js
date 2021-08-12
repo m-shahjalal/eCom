@@ -56,29 +56,39 @@ actions.checkLogin = (token) => async (dispatch) => {
 		dispatch({ type: USER_LOGIN_REQUEST });
 		const { data } = await userApi.checkLogin(token);
 		if (data.error) {
+			localStorage.removeItem('cart');
+			localStorage.removeItem('payment');
+			localStorage.removeItem('user');
+			localStorage.removeItem('subTotal');
+			localStorage.removeItem('wish');
+			localStorage.removeItem('address');
 			dispatch({ type: USER_LOGIN_FAIL, payload: data.error });
 		}
 		dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
 	} catch (error) {
+		localStorage.removeItem('cart');
+		localStorage.removeItem('payment');
+		localStorage.removeItem('user');
+		localStorage.removeItem('subTotal');
+		localStorage.removeItem('wish');
+		localStorage.removeItem('address');
 		dispatch({ type: USER_LOGIN_FAIL, payload: error.message });
 	}
 };
 
 actions.logout = () => (dispatch) => {
-	localStorage.removeItem('user');
 	localStorage.removeItem('cart');
-	localStorage.removeItem('address');
 	localStorage.removeItem('payment');
+	localStorage.removeItem('user');
+	localStorage.removeItem('subTotal');
+	localStorage.removeItem('wish');
+	localStorage.removeItem('address');
 	dispatch({ type: USER_LOGOUT });
 	dispatch({ type: USER_DETAILS_RESET });
-	// todo: import order constraints
-	// dispatch({ type: ORDER_LIST_MY_RESET });
-	// todo: import order constraints
-	// dispatch({ type: USER_LIST_RESET });
 	document.location.href = '/login';
 };
 
-actions.userDetails = (id) => async (dispatch) => {
+actions.getUserDetails = (id) => async (dispatch) => {
 	try {
 		dispatch({ type: USER_DETAILS_REQUEST });
 		const { data } = await userApi.userDetails(id);

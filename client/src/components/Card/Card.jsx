@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Star from 'react-star-rating-component';
 import { addToCart } from '../../store/cart/action';
 import classes from './card.module.css';
 
@@ -36,22 +37,36 @@ const Card = ({ product }) => {
 				{product.name}
 			</Link>
 			<div className={classes.bottom}>
-				<div className={classes.cart} onClick={() => addCart(product)}>
-					<svg
-						className='w-6 h-6'
-						fill='none'
-						stroke='currentColor'
-						viewBox='0 0 24 24'
-						xmlns='http://www.w3.org/2000/svg'>
-						<path
-							strokeLinecap='round'
-							strokeLinejoin='round'
-							strokeWidth={2}
-							d='M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z'
-						/>
-					</svg>
+				<div className={classes.review}>
+					<Star
+						name='rate'
+						value={product.rating}
+						starColor='#56b280'
+						emptyStarColor='#242423'
+						editing={false}
+					/>
+					({product.numReviews})
 				</div>
-				<div className={classes.price}>${product.price}</div>
+				<div className={classes.right}>
+					<div
+						className={classes.cart}
+						onClick={() => addCart(product)}>
+						<svg
+							className='w-6 h-6'
+							fill='none'
+							stroke='currentColor'
+							viewBox='0 0 24 24'
+							xmlns='http://www.w3.org/2000/svg'>
+							<path
+								strokeLinecap='round'
+								strokeLinejoin='round'
+								strokeWidth={2}
+								d='M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z'
+							/>
+						</svg>
+					</div>
+					<div className={classes.price}>${product.price}</div>
+				</div>
 			</div>
 			{notification && (
 				<div className={classes.alert}>{notification}</div>

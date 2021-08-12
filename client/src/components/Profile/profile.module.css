@@ -1,0 +1,184 @@
+.profile {
+	max-width: 1100px;
+	@apply bg-gray-100 pt-24 mx-auto p-4;
+}
+.notUser {
+	@apply bg-white p-3 border-t-4 rounded-lg border-2 mb-4 w-full h-full py-10 flex flex-col justify-center items-center gap-7;
+	border-color: #56b280;
+}
+.notUserLead {
+	@apply text-center text-gray-700 text-2xl;
+}
+.imageDiv {
+	max-width: 200px;
+}
+
+.buttonDiv {
+	@apply flex justify-center items-center gap-4;
+}
+.createButton,
+.logoutButton {
+	@apply bg-gray-200 px-5 py-2 rounded-md shadow-md text-white;
+	background-color: #56b280;
+}
+.userLogout {
+	@apply bg-red-500 w-full px-5 py-2 rounded-md shadow-md text-white mt-3 transition-all duration-300 hover:bg-red-700;
+}
+
+.logoutButton {
+	@apply bg-red-500;
+}
+.topSection {
+	@apply md:flex justify-center items-stretch gap-4;
+}
+.left {
+	@apply md:w-3/12 bg-white p-3 border-t-4 rounded-lg border-2 mb-4;
+	border-color: #56b280;
+}
+.card {
+	@apply w-full flex md:block gap-3;
+	border-color: #56b280;
+}
+.imgDiv {
+	@apply overflow-hidden rounded-t-lg flex-1 flex w-full justify-center items-center;
+}
+
+.thumb {
+	@apply w-full object-cover object-center;
+}
+.cardDetails {
+	@apply flex-1 self-end;
+}
+.name {
+	@apply text-gray-900 font-bold text-xl leading-8 my-1 mt-3;
+}
+.tagline {
+	@apply text-gray-600 font-light leading-6;
+}
+.bio {
+	@apply text-sm text-gray-500 hover:text-gray-600 leading-6;
+}
+.right {
+	@apply md:w-9/12 bg-white p-4 shadow-sm rounded-lg  mb-4;
+}
+.about {
+	@apply w-full flex justify-center items-center flex-col h-full;
+}
+.topLine {
+	@apply flex text-2xl items-center space-x-2 font-semibold text-gray-700 leading-8;
+}
+.track {
+	@apply tracking-wide;
+}
+.box {
+	@apply text-gray-700 text-sm;
+}
+.aboutGrid {
+	@apply grid grid-cols-2 my-3;
+}
+.aboutKey {
+	@apply px-4 py-2 font-semibold;
+}
+.aboutValue {
+	@apply px-4 py-2;
+}
+.button {
+	@apply border-0 px-4 py-1 text-xs text-gray-50 rounded transition-all duration-300 hover:text-gray-200;
+	background-color: #56b280;
+}
+
+/* 2nd section */
+
+.tableContainer {
+	@apply inline-block border  min-w-full shadow rounded-lg overflow-hidden mt-8;
+	background: #62c990;
+}
+.lead {
+	@apply text-center text-3xl text-white my-10;
+}
+.tableRow {
+	@apply overflow-x-auto;
+}
+
+.table {
+	@apply min-w-full leading-normal;
+}
+.tableHead {
+	@apply px-5 py-3 border-b-2 border-yellow-400 text-left  font-semibold text-white uppercase tracking-wider;
+}
+
+.tableData {
+	@apply px-5 border-b border-gray-200 bg-white text-base py-10;
+}
+.innerRow:nth-child(even) .tableData {
+	background-color: #d6fde8;
+}
+
+/* edit profile */
+
+.edit {
+	max-width: 600px;
+	@apply mx-auto w-full py-24 px-4;
+}
+
+.form {
+	@apply border p-4 rounded-lg shadow;
+}
+
+.editLead {
+	@apply text-gray-700 text-3xl text-center mt-6;
+}
+
+.field {
+	@apply w-full flex flex-col  rounded-md mb-1 py-2 mt-2;
+}
+
+.fieldLabel {
+	@apply uppercase mb-1;
+}
+
+.fieldInput {
+	@apply w-full bg-white rounded border border-gray-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out h-10;
+}
+.fileInput {
+	@apply p-0;
+}
+.fieldInput:focus {
+	box-shadow: 0 0 2px #56b280;
+	border-color: #56b280;
+}
+.field:focus-within {
+	border-color: #56b280;
+}
+
+.selectInput {
+	@apply py-0;
+}
+
+.fields {
+	display: grid;
+	grid-gap: 1rem;
+}
+
+.error {
+	@apply text-xs text-red-600 mt-1;
+}
+.errorAtm {
+	@apply text-xs text-red-600 -mt-2;
+}
+.cardForm {
+	@apply w-full h-full;
+}
+.submit {
+	@apply px-5 py-2 text-center m-auto w-full mt-4 rounded text-white mb-4 hover:bg-white hover:text-gray-700 transition duration-300;
+	background-color: #56b280;
+}
+.detailButton {
+	@apply px-4 py-2 bg-green-600 text-white rounded-md;
+}
+.empty {
+	@apply text-white text-center text-4xl my-10;
+}
+.link {
+	@apply text-sm bg-gray-100 px-5 py-2 rounded-sm text-gray-800;
+}

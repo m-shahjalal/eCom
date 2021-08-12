@@ -1,15 +1,27 @@
-import { useState } from 'react';
+import { useFormik } from 'formik';
 import classes from './contact.module.css';
 
-const Contact = () => {
-	const [values, setValues] = useState({ name: '', email: '', message: '' });
-	const changeHandler = (e) =>
-		setValues({ ...values, [e.target.name]: e.target.value });
+function validateEmail(email) {
+	const re =
+		/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(String(email).toLowerCase());
+}
 
-	const submitHandler = (e) => {
-		e.preventDefault();
-		console.log(values);
-	};
+const Contact = () => {
+	const formik = useFormik({
+		initialValues: { name: '', email: '', message: '' },
+		onSubmit: (value) => {},
+		validate: (value) => {
+			const error = {};
+			if (!value.name) error.name = 'name is required';
+			if (!validateEmail(value.email)) error.email = 'give a valid email';
+			if (!value.message) error.message = 'message is required';
+			if (value.message.length < 30)
+				error.message = 'Message Must be grater than 30 characters';
+			return error;
+		},
+	});
+
 	return (
 		<section className={classes.contact}>
 			<div className={classes.containerDiv}>
@@ -22,7 +34,7 @@ const Contact = () => {
 				</div>
 				<div className='inputTop'>
 					<form
-						onSubmit={submitHandler}
+						onSubmit={formik.handleSubmit}
 						className={classes.inputContainer}>
 						<div className={classes.row}>
 							<input
@@ -31,9 +43,15 @@ const Contact = () => {
 								name='name'
 								className={classes.input}
 								placeholder='Your Name'
-								value={values.name}
-								onChange={changeHandler}
+								value={formik.values.name}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
 							/>
+							{formik.touched.name && formik.errors.name && (
+								<div className={classes.error}>
+									{formik.errors.name}
+								</div>
+							)}
 						</div>
 						<div className={classes.row}>
 							<input
@@ -42,9 +60,15 @@ const Contact = () => {
 								name='email'
 								className={classes.input}
 								placeholder='Your Email'
-								value={values.email}
-								onChange={changeHandler}
+								value={formik.values.email}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
 							/>
+							{formik.touched.email && formik.errors.email && (
+								<div className={classes.error}>
+									{formik.errors.email}
+								</div>
+							)}
 						</div>
 						<div className={classes.textareaRow}>
 							<textarea
@@ -52,9 +76,16 @@ const Contact = () => {
 								name='message'
 								className={classes.textarea}
 								placeholder='Your Valuable message...'
-								value={values.message}
-								onChange={changeHandler}
+								value={formik.values.message}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
 							/>
+							{formik.touched.message &&
+								formik.errors.message && (
+									<div className={classes.error}>
+										{formik.errors.message}
+									</div>
+								)}
 						</div>
 						<div className={classes.textareaRow}>
 							<button type='submit' className={classes.button}>

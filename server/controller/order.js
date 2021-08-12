@@ -81,9 +81,23 @@ controller.payment = async (req, res, next) => {
 			orderId: order._id,
 			recept: charge.receipt_url,
 		});
+	} catch (err) {
+		if (err.type) {
+			return res.json({ error: true, message: err.message });
+		} else {
+			return next(error.message);
+		}
+	}
+};
+
+controller.getOrderList = async (req, res, next) => {
+	const id = req.user._id;
+	try {
+		const orders = await Order.find({ user: id });
+		res.status(200).json(orders);
 	} catch (error) {
-		console.log(error);
 		next(error.message);
 	}
 };
 module.exports = controller;
+ 

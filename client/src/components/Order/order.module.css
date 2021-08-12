@@ -65,3 +65,6 @@
 .loadingDiv {
 	@apply flex justify-center items-center gap-3;
 }
+.error {
+	@apply text-center text-red-600 my-2;
+}

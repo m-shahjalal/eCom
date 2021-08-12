@@ -27,9 +27,12 @@ const Sign = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const userSignup = useSelector((state) => state.userSignup);
+	const userLogin = useSelector((state) => state.userLogin);
 	const submitHandler = (values) => {
 		dispatch(actions.register(values));
 	};
+
+	userLogin?.user?.id && history.push('/profile');
 
 	useEffect(() => {
 		if (userSignup?.user?.email) {

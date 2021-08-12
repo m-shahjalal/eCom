@@ -15,5 +15,5 @@
 	@apply col-span-4 -mt-4;
 }
 .error {
-	@apply text-center mb-10 text-2xl;
+	@apply text-center mb-10 text-2xl col-span-4 m-auto;
 }

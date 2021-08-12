@@ -54,3 +54,34 @@
 	margin-bottom: 10px;
 	width: 100px;
 }
+.categoryLead {
+	@apply py-32 text-3xl text-center text-gray-700 w-full px-10;
+}
+.categoryGreen {
+	@apply font-semibold;
+	color: #56b280;
+}
+.search {
+	@apply pt-24 w-full;
+}
+.searchInput {
+	@apply flex justify-center items-center w-full flex-1;
+}
+.Input {
+	@apply p-4 px-7 my-4 outline-none rounded-full ml-14 border;
+	border-color: #56b280;
+}
+.searchButton {
+	@apply text-4xl relative right-14;
+}
+.glob {
+	animation: glob 3s linear infinite forwards;
+}
+@keyframes glob {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

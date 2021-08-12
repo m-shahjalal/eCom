@@ -25,9 +25,9 @@ userReducer.loginReducer = (state = {}, action) => {
 		case USER_LOGIN_SUCCESS:
 			return { loading: false, user: action.payload };
 		case USER_LOGIN_FAIL:
-			return { loading: false, error: action.payload };
+			return { loading: false, user: {}, error: action.payload };
 		case USER_LOGOUT:
-			return {};
+			return { user: {} };
 		default:
 			return state;
 	}
@@ -53,7 +53,11 @@ userReducer.userDetailsReducer = (state = {}, action) => {
 		case USER_DETAILS_REQUEST:
 			return { ...state, loading: true };
 		case USER_DETAILS_SUCCESS:
-			return { loading: false, user: action.payload };
+			return {
+				loading: false,
+				user: action.payload.user,
+				profile: action.payload.profile,
+			};
 		case USER_DETAILS_FAIL:
 			return { loading: false, error: action.payload };
 		case USER_DETAILS_RESET:
@@ -63,7 +67,7 @@ userReducer.userDetailsReducer = (state = {}, action) => {
 	}
 };
 
-userReducer.updateReducer = (state = {}, action) => {
+userReducer.updateReducer = (state = { success: false }, action) => {
 	switch (action.type) {
 		case USER_UPDATE_REQUEST:
 			return { loading: true };

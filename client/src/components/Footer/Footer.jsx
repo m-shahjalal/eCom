@@ -52,13 +52,13 @@ const Footer = () => {
 				<footer className={classes.footer}>
 					<div className={classes.row}>
 						<div className={classes.col1}>
-							<div className={classes.imageDiv}>
+							<Link to='/' className={classes.imageDiv}>
 								<img
 									src={logo}
 									alt='logo'
 									className={classes.image}
 								/>
-							</div>
+							</Link>
 							<p className={classes.logoText}>
 								Your natural candle made for your home and for
 								your wellness.
@@ -117,7 +117,7 @@ const Footer = () => {
 						&copy; All rights reserved
 					</div>
 					<div className={classes.design}>
-						Designed with 💛 by
+						Designed with ❤️ by
 						<a
 							className={classes.externalLink}
 							rel='noreferrer'

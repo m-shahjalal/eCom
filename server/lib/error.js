@@ -2,17 +2,30 @@ const logger = require('../utils/logger');
 
 module.exports = (app) => {
 	app.use((req, res, next) => {
-		const error = new Error(`Not Found - ${req.originalUrl}`);
-		res.status(404);
+		if (res.headersSent === true) {
+			logger.error('Header already sent to client');
+			next('Header already sent to client');
+		}
+	});
+
+	app.use((req, res, next) => {
+		let error = new Error('404 page not found');
+		error.status = 404;
 		next(error);
 	});
 
-	app.use((err, _req, res, _next) => {
-		const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
-		res.status(statusCode);
-		res.json({
-			message: err.message,
-			stack: process.env.NODE_ENV === 'production' ? null : err.stack,
-		});
+	app.use((error, req, res, next) => {
+		console.log(error);
+		if (error.status === 404) {
+			logger.error(error.message || error.error);
+			res.json({ error: error.message, status: error.status });
+		} else {
+			res.json({
+				error: error.message || error || 'internal server error',
+				status: error.status || 500,
+			});
+			logger.error(error.message || 'internal server error');
+		}
+		next();
 	});
 };
