@@ -34,7 +34,7 @@
 	border-color: #56b280;
 }
 .button {
-	@apply text-white  border-0 py-2 mt-2 px-8 focus:outline-none rounded text-lg;
+	@apply text-white  border-0 py-2 mt-2 px-8 focus:outline-none rounded text-lg flex justify-center items-center;
 	background: #56b280;
 }
 .changeBtn {
