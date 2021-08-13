@@ -1,0 +1,8 @@
+[build]
+    base = "client/"
+    publish = "client/build"
+    command = "cd client && yarn build"
+
+[[redirects]]
+  from = "/*"
+  to = "index.html"
