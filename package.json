@@ -8,7 +8,7 @@
 		"server": "nodemon index.js",
 		"client": "npm start --prefix client",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
-		"netlify": "cd client && npm run build"
+		"build": "cd client && npm run build"
 	},
 	"author": "Shahjalal",
 	"license": "MIT",
