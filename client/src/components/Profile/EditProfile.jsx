@@ -2,7 +2,7 @@ import { Field, Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
-import { getUserDetails, updateUser } from '../../store/user/action';
+import actions from '../../store/user/action';
 import classes from './profile.module.css';
 const phoneRegExp =
 	/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -49,7 +49,6 @@ const EditProfile = () => {
 	const { state } = location;
 	state === undefined && history.goBack();
 	const dispatch = useDispatch();
-	const userDetails = useSelector((state) => state.userDetails);
 	const userUpdate = useSelector((state) => state.userUpdate);
 	const initialValues = {
 		name: state?.name || '',
@@ -66,9 +65,8 @@ const EditProfile = () => {
 		for (const key in values) {
 			data.append(key, values[key]);
 		}
-		dispatch(updateUser(state.id, data));
-		dispatch(getUserDetails(state.id));
-		userDetails.profile && history.push('/profile');
+		dispatch(actions.updateUser(state.id, data));
+		userUpdate.success && history.push('/profile');
 	};
 
 	userUpdate.success && history.push('/profile');

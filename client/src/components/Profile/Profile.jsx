@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import image from '../../images/notUser.svg';
-import { getUserDetails, logout } from '../../store/user/action';
+import actions from '../../store/user/action';
 import classes from './profile.module.css';
 import Table from './Table';
 
@@ -17,11 +17,11 @@ const Profile = () => {
 	if (!id) history.push('/login');
 	useEffect(() => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
-		dispatch(getUserDetails(id));
+		dispatch(actions.getUserDetails(id));
 	}, [dispatch, history, id]);
 
 	const logOut = () => {
-		dispatch(logout());
+		dispatch(actions.logout());
 	};
 
 	return (

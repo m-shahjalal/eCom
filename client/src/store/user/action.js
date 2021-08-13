@@ -1,4 +1,4 @@
-import userApi from '../../api/user';
+import * as userApi from '../../api/user';
 import {
 	USER_DETAILS_FAIL,
 	USER_DETAILS_REQUEST,
