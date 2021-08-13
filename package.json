@@ -4,11 +4,10 @@
 	"description": "This is mernstack server api",
 	"main": "index.js",
 	"scripts": {
-		"start": "node backend/server",
+		"start": "node index",
 		"server": "nodemon index",
 		"client": "npm start --prefix client",
-		"dev": "concurrently \"npm run server\" \"npm run client\"",
-		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install"
+		"dev": "concurrently \"npm run server\" \"npm run client\""
 	},
 	"author": "Shahjalal",
 	"license": "MIT",
@@ -29,5 +28,8 @@
 	"devDependencies": {
 		"concurrently": "^6.2.0",
 		"nodemon": "^2.0.12"
+	},
+	"engines": {
+		"node": "14.x"
 	}
 }
