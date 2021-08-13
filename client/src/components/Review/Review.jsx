@@ -10,12 +10,22 @@ const Review = ({ id, review }) => {
 	const userLogin = useSelector((state) => state.userLogin);
 	const [value, setValue] = useState({ rate: 0, text: '' });
 	const [notification, setNotification] = useState(false);
+	const [error, setError] = useState(false);
 
 	useEffect(() => {
 		let time;
 		if (notification) time = setTimeout(() => setNotification(false), 2000);
 		return () => clearTimeout(time);
 	}, [notification, setNotification]);
+
+	useEffect(() => {
+		let timer;
+		if (productReview.error) {
+			setError(productReview.error);
+			timer = setTimeout(() => setError(false), 6000);
+		}
+		return () => clearTimeout(timer);
+	}, [productReview.error]);
 	const dispatch = useDispatch();
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -85,9 +95,8 @@ const Review = ({ id, review }) => {
 								</div>
 							</div>
 						</form>
-						{productReview.error && (
-							<div className={classes.feedBackError}>
-								{productReview.error} <br />
+						{error && ( <div className={classes.feedBackError}>
+								{error} <br />
 								N.B. you can only review once
 							</div>
 						)}
