@@ -11,7 +11,7 @@ const Products = ({ products, title }) => {
 			<p className={classes.text}>
 				Order it for you or for your beloved ones
 			</p>
-			{products?.loading && !products?.products.length > 0 && (
+			{products?.loading && (
 				<div className={classes.loading}>
 					<div className='loader'></div>
 				</div>

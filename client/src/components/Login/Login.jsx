@@ -98,10 +98,6 @@ const Login = () => {
 								<button
 									type='submit'
 									className={classes.button}>
-									{userLogin.loading && (
-										<div className='loader-sm'></div>
-									)}
-									{'  '}
 									Button
 								</button>
 							</Form>

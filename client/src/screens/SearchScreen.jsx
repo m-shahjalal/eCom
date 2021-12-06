@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Products from '../components/Products/Products';
-import { clearCategory, searchProducts } from '../store/product/action';
+import { searchProducts } from '../store/product/action';
 import classes from './screen.module.css';
 
 const SearchScreen = () => {
@@ -17,10 +17,7 @@ const SearchScreen = () => {
 		let time;
 		if (Boolean(value))
 			time = setTimeout(() => dispatch(searchProducts(value)), 600);
-		return () => {
-			clearTimeout(time);
-			dispatch(clearCategory());
-		};
+		return () => clearTimeout(time);
 	}, [value, dispatch]);
 
 	return (
