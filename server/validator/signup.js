@@ -39,7 +39,9 @@ module.exports = [
 	(req, res, next) => {
 		var errorValidation = validationResult(req);
 		if (!errorValidation.isEmpty()) {
-			return res.json(errorValidation.array({ onlyFirstError: true }));
+			return res
+				.status(403)
+				.json(errorValidation.array({ onlyFirstError: true }));
 		}
 		next();
 	},

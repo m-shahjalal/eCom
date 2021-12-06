@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from 'formik';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import actions from '../../store/user/action';
 import classes from './sign.module.css';
@@ -22,23 +22,19 @@ const validationSchema = Yup.object().shape({
 		.required('confirm password must be provided'),
 });
 
-const Sign = () => {
-	const { state } = useLocation();
-	const history = useHistory();
-	const dispatch = useDispatch();
+const Sign = ({ state }) => {
+	const navigate = useNavigate();
 	const userSignup = useSelector((state) => state.userSignup);
-	const userLogin = useSelector((state) => state.userLogin);
+	const dispatch = useDispatch();
 	const submitHandler = (values) => {
 		dispatch(actions.register(values));
 	};
-
-	userLogin?.user?.id && history.push('/profile');
-
 	useEffect(() => {
-		if (userSignup?.user?.email) {
-			history.push(state.goto || '/');
-		}
-	}, [history, state, userSignup]);
+		userSignup.success && navigate('/login', { state: state });
+	}, [navigate, userSignup.success, state]);
+
+	console.log(state);
+
 	return (
 		<section className={classes.sign}>
 			<div className={classes.signContainer}>
@@ -55,6 +51,11 @@ const Sign = () => {
 				</div>
 				<div className={classes.rightColumn}>
 					<h2 className={classes.signLead}>Sign Up</h2>
+					{userSignup.error && (
+						<div className={classes.leadError}>
+							{userSignup.error}
+						</div>
+					)}
 					<Formik
 						initialValues={initialValues}
 						onSubmit={submitHandler}
@@ -138,8 +139,13 @@ const Sign = () => {
 											</div>
 										)}
 								</div>
-								<button className={classes.button}>
-									Button
+								<button
+									type='submit'
+									className={classes.button}>
+									{userSignup.loading && (
+										<div className='loader-sm'></div>
+									)}
+									<span> submit</span>
 								</button>
 							</Form>
 						)}
@@ -147,7 +153,8 @@ const Sign = () => {
 					<p className={classes.bottom}>
 						Already have an account ?
 						<Link
-							to={{ pathname: '/login', state }}
+							state={state}
+							to={{ pathname: '/login' }}
 							className={classes.changeBtn}>
 							Log in
 						</Link>

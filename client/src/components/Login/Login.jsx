@@ -1,8 +1,8 @@
 import { Field, Form, Formik } from 'formik';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
+import useAuth from '../../hooks/useAuth';
 import actions from '../../store/user/action';
 import classes from './login.module.css';
 
@@ -16,19 +16,13 @@ const validationSchema = Yup.object().shape({
 	password: Yup.string().min(6).required('password is required'),
 });
 
-const Login = () => {
-	const userLogin = useSelector((state) => state.userLogin);
-	const history = useHistory();
-	const { state } = useLocation();
+const Login = ({ state }) => {
+	const auth = useAuth();
 	const dispatch = useDispatch();
 	const submitHandler = (value) => {
 		dispatch(actions.login(value));
 	};
-	useEffect(() => {
-		if (userLogin?.user?.email) {
-			history.push(state?.goto || '/profile');
-		}
-	}, [history, state, userLogin]);
+
 	return (
 		<section className={classes.sign}>
 			<div className={classes.signContainer}>
@@ -48,8 +42,8 @@ const Login = () => {
 						<h3 className={classes.alert}>{state?.alert}</h3>
 					) : null}
 					<h2 className={classes.signLead}>Log in</h2>
-					{userLogin.error && (
-						<div className={classes.error}>{userLogin.error}</div>
+					{auth.error && (
+						<div className={classes.leadError}>{auth.error}</div>
 					)}
 					<Formik
 						initialValues={initialValues}
@@ -98,19 +92,20 @@ const Login = () => {
 								<button
 									type='submit'
 									className={classes.button}>
-									{userLogin.loading && (
+									{auth.loading && (
 										<div className='loader-sm'></div>
 									)}
 									{'  '}
-									Button
+									Log in
 								</button>
 							</Form>
 						)}
 					</Formik>
 					<p className={classes.bottom}>
-						Don't have account ?
+						Don't have account?
 						<Link
-							to={{ pathname: '/signup', state }}
+							state={state}
+							to={{ pathname: '/signup' }}
 							className={classes.changeBtn}>
 							sign up
 						</Link>

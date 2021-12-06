@@ -1,6 +1,6 @@
 import { Field, Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
 import actions from '../../store/user/action';
 import classes from './profile.module.css';
@@ -45,9 +45,9 @@ const validationSchema = Yup.object().shape({
 
 const EditProfile = () => {
 	const location = useLocation();
-	const history = useHistory();
+	const navigate = useNavigate();
 	const { state } = location;
-	state === undefined && history.goBack();
+	state === undefined && navigate(-1);
 	const dispatch = useDispatch();
 	const userUpdate = useSelector((state) => state.userUpdate);
 	const initialValues = {
@@ -66,10 +66,7 @@ const EditProfile = () => {
 			data.append(key, values[key]);
 		}
 		dispatch(actions.updateUser(state.id, data));
-		userUpdate.success && history.push('/profile');
 	};
-
-	userUpdate.success && history.push('/profile');
 
 	return (
 		<div className={classes.edit}>

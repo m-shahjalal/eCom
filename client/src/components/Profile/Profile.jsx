@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import image from '../../images/notUser.svg';
 import actions from '../../store/user/action';
 import classes from './profile.module.css';
@@ -8,20 +8,21 @@ import Table from './Table';
 
 const Profile = () => {
 	const dispatch = useDispatch();
-	const history = useHistory();
 	const userDetails = useSelector((state) => state.userDetails);
+	const navigate = useNavigate();
 	const orders = useSelector((state) => state.orders);
 	const { profile } = userDetails;
 	const user = JSON.parse(localStorage.getItem('user')) || {};
 	const { id } = user;
-	if (!id) history.push('/login');
+
 	useEffect(() => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 		dispatch(actions.getUserDetails(id));
-	}, [dispatch, history, id]);
+	}, [dispatch, id]);
 
 	const logOut = () => {
 		dispatch(actions.logout());
+		navigate('/login', { replace: true });
 	};
 
 	return (

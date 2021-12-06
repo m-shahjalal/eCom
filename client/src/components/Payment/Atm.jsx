@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Card from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { savePaymentMethod } from '../../store/cart/action';
 import classes from './checkout.module.css';
@@ -45,11 +45,11 @@ const validationSchema = Yup.object().shape({
 
 const Atm = () => {
 	const [focus, setFocus] = useState('');
-	const history = useHistory();
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const submitHandler = (values) => {
 		dispatch(savePaymentMethod(values));
-		history.push('/place-order');
+		navigate('/place-order');
 	};
 	return (
 		<div>

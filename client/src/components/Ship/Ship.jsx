@@ -1,17 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import classes from './ship.module.css';
 
 const Ship = ({ setPage }) => {
 	const [value, setValue] = useState('standard');
 	const cart = useSelector((state) => state.cart);
+	const navigate = useNavigate();
 	const { address } = cart;
-	const history = useHistory();
-	if (!address.email) {
-		history.push('/shipping/address');
-	}
+
+	useEffect(
+		() => !address.address && navigate('/shipping/address'),
+		[address.address, navigate]
+	);
 
 	return (
 		<>

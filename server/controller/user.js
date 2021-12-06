@@ -21,14 +21,10 @@ user.createUser = async (req, res, next) => {
 	try {
 		const hashed = await crypto.genPassword(password);
 		const user = await User.create({ name, email, password: hashed });
-		const jwt = token.generateToken({ email: user.email });
-		res.json({
+		res.status(201).json({
 			id: user._id,
 			name: user.name,
 			email: user.email,
-			result: true,
-			token: jwt,
-			isLoggedIn: true,
 		});
 	} catch (error) {
 		next(error.message);
@@ -51,10 +47,10 @@ user.login = async (req, res, next) => {
 					isLoggedIn: true,
 				});
 			} else {
-				throw new Error('something went wrong');
+				res.status(403).json({ error: 'credential not match' });
 			}
 		} else {
-			res.json({ message: 'no user found' });
+			res.status(403).json({ error: 'credential not match' });
 		}
 	} catch (e) {
 		next(e);
@@ -99,7 +95,6 @@ user.getUserDetails = async (req, res, next) => {
 };
 
 user.editUser = async (req, res, next) => {
-	const { id } = req.params;
 	const { name, tagline, contact, address, city, country, zipCode } =
 		req.body;
 	try {

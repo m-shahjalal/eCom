@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import useAuth from '../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png';
 import classes from './nav.module.css';
+import { useSelector } from 'react-redux';
 
 const Nav = () => {
-	const userLogin = useSelector((state) => state.userLogin);
-	const { isLoggedIn } = userLogin?.user || false;
+	const auth = useAuth();
 	const [show, setShow] = useState(false);
 	const cart = useSelector((state) => state.cart.items);
 	const cardValue = cart.length || 0;
@@ -89,7 +89,7 @@ const Nav = () => {
 				</ul>
 				<div className={classes.right}>
 					<div className={classes.user}>
-						{isLoggedIn ? (
+						{auth.isLoggedIn ? (
 							<Link to='/profile' className={classes.link}>
 								<svg
 									className='w-6 h-6'

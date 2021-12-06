@@ -26,7 +26,7 @@ body {
 }
 .loader {
 	margin: 60px auto;
-	font-size: 10px;
+	font-size: 5px;
 	position: relative;
 	text-indent: -9999em;
 	border-top: 1.1em solid rgba(89, 194, 112, 0.2);
@@ -36,8 +36,8 @@ body {
 	-webkit-transform: translateZ(0);
 	-ms-transform: translateZ(0);
 	transform: translateZ(0);
-	-webkit-animation: load 1.1s infinite linear;
-	animation: load 1.1s infinite linear;
+	-webkit-animation: load 1.7s infinite linear;
+	animation: load 1.7s infinite linear;
 }
 
 .loader-sm {

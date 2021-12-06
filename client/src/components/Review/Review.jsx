@@ -95,7 +95,8 @@ const Review = ({ id, review }) => {
 								</div>
 							</div>
 						</form>
-						{error && ( <div className={classes.feedBackError}>
+						{error && (
+							<div className={classes.feedBackError}>
 								{error} <br />
 								N.B. you can only review once
 							</div>
@@ -131,12 +132,12 @@ const Review = ({ id, review }) => {
 							</div>
 						</div>
 						<div className={classes.comment}>{item.comment}</div>
-						<di className={classes.timeStamp}>
+						<div className={classes.timeStamp}>
 							{`${item.createdAt.slice(
 								0,
 								10
 							)} - ${item.createdAt.slice(11, 20)}`}
-						</di>
+						</div>
 					</div>
 				))}
 			</div>

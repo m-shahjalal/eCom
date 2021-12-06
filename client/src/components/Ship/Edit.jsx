@@ -1,6 +1,6 @@
 import { Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { saveShippingAddress } from '../../store/cart/action';
 import classes from './ship.module.css';
@@ -31,10 +31,10 @@ const validationSchema = Yup.object().shape({
 
 const Edit = () => {
 	const dispatch = useDispatch();
-	const history = useHistory();
+	const navigate = useNavigate();
 	const submitHandler = (value) => {
 		dispatch(saveShippingAddress(value));
-		history.push('/shipping');
+		navigate('/shipping');
 	};
 	return (
 		<div className={classes.address}>
