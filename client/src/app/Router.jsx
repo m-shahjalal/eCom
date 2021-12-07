@@ -33,6 +33,7 @@ const Router = () => {
 				location.pathname !== '/completed' &&
 				location.pathname !== '/shipping' &&
 				location.pathname !== '/shipping/address' &&
+				location.pathname !== '/place-order' &&
 				location.pathname !== '/payment' && <Nav />}
 			<Routes>
 				<Route path='/signup' element={<SignScreen />} />

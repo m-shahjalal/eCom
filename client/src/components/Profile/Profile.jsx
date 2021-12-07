@@ -144,7 +144,7 @@ const Profile = () => {
 				</div>
 			)}
 			{/* Order sections */}
-			<Table orders={orders} />
+			{profile?.user && <Table orders={orders} />}
 		</div>
 	);
 };

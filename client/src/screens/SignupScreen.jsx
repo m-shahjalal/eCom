@@ -1,7 +1,5 @@
 import Sign from '../components/Register/Sign';
-import { useNavigate, useLocation } from 'react-router';
-import useAuth from '../hooks/useAuth';
-import { useEffect } from 'react';
+import { useLocation } from 'react-router';
 
 const SignScreen = () => {
 	const { state } = useLocation();

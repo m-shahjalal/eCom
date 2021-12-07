@@ -23,8 +23,11 @@ const Order = () => {
 	useEffect(() => {
 		if (orderCreate.success) {
 			navigate('/completed', {
-				orderId: orderCreate.order?.orderId || false,
-				receptLink: orderCreate.order?.recept || false,
+				state: {
+					orderId: orderCreate.order?.orderId || false,
+					receptLink: orderCreate.order?.recept || false,
+				},
+				replace: true,
 			});
 		}
 	}, [navigate, orderCreate]);

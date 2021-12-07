@@ -25,6 +25,9 @@
 .item {
 	@apply my-2 flex justify-center w-full;
 }
+.user {
+	@apply flex;
+}
 .link {
 	height: 28px;
 	@apply flex px-4 hover:bg-blue-50 hover:text-gray-800 transition-all text-center relative;

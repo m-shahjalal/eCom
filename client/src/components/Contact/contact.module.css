@@ -22,7 +22,7 @@
 	@apply flex flex-wrap -m-2;
 }
 .row {
-	@apply p-2 mb-2 w-full sm:w-1/2;
+	@apply p-2 mb-2 w-full;
 }
 .label {
 	@apply leading-7 text-sm text-gray-600;
