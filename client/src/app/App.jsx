@@ -1,21 +1,15 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import actions from '../store/user/action';
 import Router from './Router';
 
 const App = () => {
 	const dispatch = useDispatch();
-	const userLogin = useSelector((state) => state.userLogin);
 	useEffect(() => {
 		const user = JSON.parse(localStorage.getItem('user'));
 		const token = (user && user.token) || false;
 		if (token) dispatch(actions.checkLogin(token));
 	}, [dispatch]);
-	useEffect(() => {
-		if (typeof userLogin.user === 'string') {
-			dispatch(actions.logout());
-		}
-	}, [userLogin.user, dispatch]);
 	return <Router />;
 };
 

@@ -48,7 +48,7 @@
 
 .address {
 	max-width: 800px;
-	@apply h-screen mt-12 mx-auto w-full;
+	@apply mt-12 mx-auto w-full;
 }
 
 .form {

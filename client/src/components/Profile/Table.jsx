@@ -26,8 +26,18 @@ const Table = ({ orders }) => {
 							borderLeftColor: 'white',
 						}}></div>
 				) : null}
+				{orders?.list?.length > 0 && (
+					<div className={classes.table}>
+						<div className={classes.empty}>
+							You did not order yet <br />
+							<Link className={classes.link} to='/'>
+								Buy something today
+							</Link>
+						</div>
+					</div>
+				)}
 				<table className={classes.table}>
-					{orders && orders.list && orders.list.length > 0 ? (
+					{orders && orders.list && orders.list.length > 0 && (
 						<thead>
 							<tr className={classes.innerRow}>
 								<th className={classes.tableHead}>ID</th>
@@ -37,13 +47,6 @@ const Table = ({ orders }) => {
 								<th className={classes.tableHead}>DETAILS</th>
 							</tr>
 						</thead>
-					) : (
-						<div className={classes.empty}>
-							You did not order yet <br />
-							<Link className={classes.link} to='/'>
-								Buy something today
-							</Link>
-						</div>
 					)}
 					<tbody>
 						{orders &&

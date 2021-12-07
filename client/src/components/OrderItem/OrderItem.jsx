@@ -1,10 +1,8 @@
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import classes from './item.module.css';
 
 const OrderItem = () => {
 	const { state } = useLocation();
-	const history = useHistory();
-	if (!state) history.goBack();
 	return (
 		<div className={classes.contain}>
 			<h2 className={classes.lead}>Order Details</h2>

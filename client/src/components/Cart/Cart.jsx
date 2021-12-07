@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import {
 	clearCart,
 	decrementItem,
@@ -14,22 +15,23 @@ const Cart = () => {
 	const cart = useSelector((state) => state.cart.items);
 	const dispatch = useDispatch();
 	const [total, setTotal] = useState(0);
-	const user = useSelector((state) => state.userLogin);
-	const isLoggedIn = user ? user.isLoggedIn : false;
-	const history = useHistory();
+	const navigate = useNavigate();
+	const auth = useAuth();
 
 	const processHandler = () => {
 		dispatch(saveSubtotal(total));
-		isLoggedIn
-			? history.push('/shipping')
-			: history.push('/login', {
-					goto: '/shipping',
-					alert: 'Log in or singup to checkout',
+		auth.isLoggedIn
+			? navigate('/shipping/address')
+			: navigate('/login', {
+					state: {
+						goto: '/shipping',
+						alert: 'Log in or singup to checkout',
+					},
 			  });
 	};
 	const clearCartButton = () => {
 		dispatch(clearCart());
-		history.push('/');
+		navigate('/');
 	};
 
 	useEffect(() => window.scrollTo({ behavior: 'smooth', top: 0 }), []);

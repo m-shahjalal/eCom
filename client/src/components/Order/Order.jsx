@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { clearCart } from '../../store/cart/action';
 import actions from '../../store/order/action';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import classes from './order.module.css';
 
 const Order = () => {
-	const history = useHistory();
+	const navigate = useNavigate();
 	const cart = useSelector((state) => state.cart);
 	const orderCreate = useSelector((state) => state.orderCreate);
 	const [tax, setTax] = useState(0);
@@ -22,12 +22,15 @@ const Order = () => {
 	useEffect(() => setTax((15 / 100) * subTotal), [setTax, subTotal]);
 	useEffect(() => {
 		if (orderCreate.success) {
-			history.push('/completed', {
-				orderId: orderCreate.order?.orderId || false,
-				receptLink: orderCreate.order?.recept || false,
+			navigate('/completed', {
+				state: {
+					orderId: orderCreate.order?.orderId || false,
+					receptLink: orderCreate.order?.recept || false,
+				},
+				replace: true,
 			});
 		}
-	}, [history, orderCreate]);
+	}, [navigate, orderCreate]);
 	return (
 		<>
 			<Breadcrumb activeItem={'order'} />

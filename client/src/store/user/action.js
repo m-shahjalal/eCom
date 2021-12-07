@@ -22,16 +22,10 @@ actions.login = (info) => async (dispatch) => {
 	try {
 		dispatch({ type: USER_LOGIN_REQUEST });
 		const { data } = await userApi.login(info);
-		if (data.error) {
-			dispatch({ type: USER_LOGIN_FAIL, payload: data.error });
-		}
 		dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
 		localStorage.setItem('user', JSON.stringify(data));
 	} catch (error) {
-		const payload =
-			error.response && error.response.data.message
-				? error.response.data.message
-				: error.message;
+		const payload = error.response?.data?.error || 'something went wrong';
 		dispatch({ type: USER_LOGIN_FAIL, payload });
 	}
 };
@@ -40,13 +34,11 @@ actions.register = (info) => async (dispatch) => {
 	try {
 		dispatch({ type: USER_REGISTER_REQUEST });
 		const { data } = await userApi.register(info);
+		console.log('this is data: ' + data);
 		dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
 		localStorage.setItem('user', JSON.stringify(data));
 	} catch (error) {
-		const payload =
-			error.response && error.response.data.message
-				? error.response.data.message
-				: error.message;
+		const payload = error.response.data[0].msg || 'something went wrong';
 		dispatch({ type: USER_REGISTER_FAIL, payload });
 	}
 };
@@ -55,15 +47,6 @@ actions.checkLogin = (token) => async (dispatch) => {
 	try {
 		dispatch({ type: USER_LOGIN_REQUEST });
 		const { data } = await userApi.checkLogin(token);
-		if (data.error) {
-			localStorage.removeItem('cart');
-			localStorage.removeItem('payment');
-			localStorage.removeItem('user');
-			localStorage.removeItem('subTotal');
-			localStorage.removeItem('wish');
-			localStorage.removeItem('address');
-			dispatch({ type: USER_LOGIN_FAIL, payload: data.error });
-		}
 		dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
 	} catch (error) {
 		localStorage.removeItem('cart');

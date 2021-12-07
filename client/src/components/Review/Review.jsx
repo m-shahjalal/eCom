@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Star from 'react-star-rating-component';
 import { reviewCreate } from '../../store/product/action';
+import useAuth from '../../hooks/useAuth';
 import classes from './review.module.css';
 
 const Review = ({ id, review }) => {
+	const { isLoggedIn } = useAuth();
 	const productReview = useSelector((state) => state.productReview);
-	const userLogin = useSelector((state) => state.userLogin);
 	const [value, setValue] = useState({ rate: 0, text: '' });
 	const [notification, setNotification] = useState(false);
 	const [error, setError] = useState(false);
@@ -41,7 +42,7 @@ const Review = ({ id, review }) => {
 	return (
 		<div className={classes.review}>
 			<div className={classes.inputBox}>
-				{userLogin?.user?.email ? (
+				{isLoggedIn ? (
 					<>
 						<form onSubmit={handleSubmit}>
 							<div className={classes.form}>
@@ -95,7 +96,8 @@ const Review = ({ id, review }) => {
 								</div>
 							</div>
 						</form>
-						{error && ( <div className={classes.feedBackError}>
+						{error && (
+							<div className={classes.feedBackError}>
 								{error} <br />
 								N.B. you can only review once
 							</div>
@@ -105,10 +107,8 @@ const Review = ({ id, review }) => {
 					<div className={classes.loginAlert}>
 						Login to review this product
 						<Link
-							to={{
-								pathname: '/login',
-								state: { goto: `/products/${id}` },
-							}}
+							to={{ pathname: '/login' }}
+							state={{ goto: `/products/${id}` }}
 							className={classes.loginButton}>
 							login
 						</Link>
@@ -131,12 +131,12 @@ const Review = ({ id, review }) => {
 							</div>
 						</div>
 						<div className={classes.comment}>{item.comment}</div>
-						<di className={classes.timeStamp}>
+						<div className={classes.timeStamp}>
 							{`${item.createdAt.slice(
 								0,
 								10
 							)} - ${item.createdAt.slice(11, 20)}`}
-						</di>
+						</div>
 					</div>
 				))}
 			</div>

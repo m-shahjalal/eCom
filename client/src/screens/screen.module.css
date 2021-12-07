@@ -24,7 +24,7 @@
 
 .thanks {
 	max-width: 800px;
-	@apply mx-auto text-center flex justify-center items-center flex-col mt-24;
+	@apply mx-auto text-center flex justify-center items-center flex-col py-10;
 }
 .svg {
 	color: #56b280;
@@ -45,13 +45,13 @@
 	@apply text-gray-700 border border-gray-300 mb-2 text-sm p-1 rounded px-2 bg-green-100;
 }
 .backToShop {
-	@apply text-xl mx-auto mt-4 border-b border-green-700 py-1 text-green-600;
+	@apply text-xl mx-auto mt-4 mb-16 border-b border-green-700 py-1 text-green-600;
 }
 
 .logo {
 	margin: auto;
-	margin-top: 30px;
-	margin-bottom: 10px;
+	padding-top: 40px;
+	margin-bottom: 20px;
 	width: 100px;
 }
 .categoryLead {

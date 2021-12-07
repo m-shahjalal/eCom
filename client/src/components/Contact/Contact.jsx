@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import classes from './contact.module.css';
 
 function validateEmail(email) {
@@ -8,9 +9,20 @@ function validateEmail(email) {
 }
 
 const Contact = () => {
+	const [loading, setLoading] = useState(false);
+	const [suceeded, setSuceeded] = useState(false);
 	const formik = useFormik({
 		initialValues: { name: '', email: '', message: '' },
-		onSubmit: (value) => {},
+		onSubmit: (value) => {
+			setLoading(true);
+			setTimeout(() => {
+				setLoading(false);
+				setSuceeded(true);
+			}, 2000);
+			value.email = '';
+			value.message = '';
+			value.name = '';
+		},
 		validate: (value) => {
 			const error = {};
 			if (!value.name) error.name = 'name is required';
@@ -88,8 +100,16 @@ const Contact = () => {
 								)}
 						</div>
 						<div className={classes.textareaRow}>
+							<div
+								style={{
+									textAlign: 'center',
+									marginBottom: 10,
+									color: '#56b280',
+								}}>
+								{suceeded && 'Data submitted successfully'}
+							</div>
 							<button type='submit' className={classes.button}>
-								Button
+								{loading ? 'loading...' : 'submit'}
 							</button>
 						</div>
 					</form>
