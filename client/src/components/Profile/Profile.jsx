@@ -9,9 +9,9 @@ import Table from './Table';
 const Profile = () => {
 	const dispatch = useDispatch();
 	const userDetails = useSelector((state) => state.userDetails);
+	const { profile } = userDetails;
 	const navigate = useNavigate();
 	const orders = useSelector((state) => state.orders);
-	const { profile } = userDetails;
 	const user = JSON.parse(localStorage.getItem('user')) || {};
 	const { id } = user;
 
@@ -144,7 +144,9 @@ const Profile = () => {
 				</div>
 			)}
 			{/* Order sections */}
-			{profile?.user && <Table orders={orders} />}
+			{(userDetails.profile?.user || userDetails.user) && (
+				<Table orders={orders} />
+			)}
 		</div>
 	);
 };
