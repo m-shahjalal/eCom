@@ -85,3 +85,16 @@
 		transform: rotate(360deg);
 	}
 }
+
+.nav {
+	@apply bg-green-400 h-16 flex relative left-0 right-0;
+}
+.openButton {
+	@apply transition transform ease-linear duration-500 text-gray-100 w-10 h-10 mt-3 rounded-full focus:outline-none ml-10  hover:text-gray-800;
+}
+.adminLogo {
+	@apply mx-4 text-gray-50 text-3xl font-bold mt-4;
+}
+.link {
+	@apply flex mr-5 text-gray-50 transition-all text-center ml-auto my-5 hover:text-gray-800;
+}

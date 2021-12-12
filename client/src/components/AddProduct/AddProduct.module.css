@@ -1,0 +1,27 @@
+.input {
+	@apply leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 border-0 bg-gray-800 rounded;
+}
+.productContainer {
+	@apply w-full bg-gray-800;
+}
+.inputContainer {
+	@apply bg-gray-900 w-full shadow rounded p-8 sm:p-12 -mt-72;
+}
+.lead {
+	@apply text-3xl font-bold leading-7 text-center text-white;
+}
+.label {
+	@apply font-semibold leading-none text-gray-300;
+}
+.textField {
+	@apply h-40 text-base leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-800 border-0 rounded;
+}
+.submitButton {
+	@apply flex justify-center items-center mt-9 font-semibold leading-none text-white py-4 px-10 bg-green-600 rounded hover:bg-green-700 focus:ring-2 focus:ring-offset-2  focus:outline-none;
+}
+.flexContainer {
+	@apply max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 pb-16;
+}
+.error {
+	@apply text-sm text-red-600 mt-1;
+}

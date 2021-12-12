@@ -1,4 +1,5 @@
 import { Field, Form, Formik } from 'formik';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
@@ -25,7 +26,7 @@ const validationSchema = Yup.object().shape({
 			if (value === undefined) {
 				return true;
 			} else {
-				return value.size < 1024 * 1024 * 1024 * 2;
+				return value.size < 1024 * 1024 * 1024;
 			}
 		})
 		.test('fileType', 'Unsupported File Format', (value) => {
@@ -44,12 +45,10 @@ const validationSchema = Yup.object().shape({
 });
 
 const EditProfile = () => {
-	const location = useLocation();
+	const { state } = useLocation();
 	const navigate = useNavigate();
-	const { state } = location;
-	state === undefined && navigate(-1);
 	const dispatch = useDispatch();
-	const userUpdate = useSelector((state) => state.userUpdate);
+	const userDetails = useSelector((state) => state.userDetails);
 	const initialValues = {
 		name: state?.name || '',
 		tagline: state?.tagline || '',
@@ -61,12 +60,20 @@ const EditProfile = () => {
 		avatar: '',
 	};
 	const submitHandler = (values) => {
+		console.log(values);
 		const data = new FormData();
 		for (const key in values) {
 			data.append(key, values[key]);
 		}
 		dispatch(actions.updateUser(state.id, data));
 	};
+	console.log(state);
+
+	useEffect(() => !state && navigate('/profile'), [state, navigate]);
+	useEffect(
+		() => userDetails.success && navigate('/profile'),
+		[state, navigate, userDetails.success]
+	);
 
 	return (
 		<div className={classes.edit}>
@@ -225,7 +232,7 @@ const EditProfile = () => {
 								<span
 									className={classes.fieldLabel}
 									htmlFor='avatar'>
-									Profile picture
+									Profile picture (max size: 1MB)
 								</span>
 								<input
 									className={`${classes.fieldInput} ${classes.fileInput}`}
@@ -247,7 +254,7 @@ const EditProfile = () => {
 								)}
 							</label>
 							<button type='submit' className={classes.submit}>
-								{userUpdate.loading ? (
+								{userDetails?.loading ? (
 									<div className='loader-sm'></div>
 								) : (
 									'continue'

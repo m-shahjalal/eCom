@@ -5,6 +5,8 @@ import logo from '../../images/logo.png';
 import classes from './nav.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import actions from '../../store/user/action';
+import { HiOutlineDocumentSearch } from 'react-icons/hi';
+import { BiCategory, BiLockAlt } from 'react-icons/bi';
 
 const Nav = () => {
 	const auth = useAuth();
@@ -63,6 +65,11 @@ const Nav = () => {
 					onClick={() => setShow(false)}>
 					<li className={classes.item}>
 						<Link to='/category' className={classes.link}>
+							<BiCategory
+								size='20px'
+								className='mr-1'
+								style={{ marginTop: '2px' }}
+							/>
 							category
 						</Link>
 					</li>
@@ -77,27 +84,49 @@ const Nav = () => {
 							Contact
 						</Link>
 					</li>
+
 					<li className={classes.item}>
 						<Link to='search' className={classes.link}>
-							<svg
-								className='w-6 h-6'
-								fill='none'
-								stroke='currentColor'
-								viewBox='0 0 24 24'
-								xmlns='http://www.w3.org/2000/svg'>
-								<path
-									strokeLinecap='round'
-									strokeLinejoin='round'
-									strokeWidth='2'
-									d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'></path>
-							</svg>
+							<HiOutlineDocumentSearch size='24px' />
 						</Link>
 					</li>
+					{auth.isLoggedIn && (
+						<li className={classes.item}>
+							<Link to='/profile' className={classes.link}>
+								<svg
+									className='w-6 h-6'
+									fill='none'
+									stroke='currentColor'
+									viewBox='0 0 24 24'
+									xmlns='http://www.w3.org/2000/svg'>
+									<path
+										strokeLinecap='round'
+										strokeLinejoin='round'
+										strokeWidth={2}
+										d='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'
+									/>
+								</svg>
+							</Link>
+						</li>
+					)}
 				</ul>
 				<div className={classes.right}>
 					<div className={classes.user}>
 						{auth.isLoggedIn ? (
 							<>
+								{auth.user?.admin && (
+									<Link to='/admin' className={classes.link}>
+										<BiLockAlt
+											size='24px'
+											className='mr-1 text-green-600'
+										/>
+										<span
+											className='text-green-600'
+											style={{ marginTop: '1px' }}>
+											Admin
+										</span>
+									</Link>
+								)}
 								<button
 									onClick={logOut}
 									className={classes.link}>
@@ -115,21 +144,6 @@ const Nav = () => {
 										/>
 									</svg>
 								</button>
-								<Link to='/profile' className={classes.link}>
-									<svg
-										className='w-6 h-6'
-										fill='none'
-										stroke='currentColor'
-										viewBox='0 0 24 24'
-										xmlns='http://www.w3.org/2000/svg'>
-										<path
-											strokeLinecap='round'
-											strokeLinejoin='round'
-											strokeWidth={2}
-											d='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'
-										/>
-									</svg>
-								</Link>
 							</>
 						) : (
 							<Link to='/signup' className={classes.link}>
@@ -149,28 +163,30 @@ const Nav = () => {
 							</Link>
 						)}
 					</div>
-					<div className={classes.cart}>
-						<Link to='/cart' className={classes.link}>
-							<svg
-								className='w-6 h-6'
-								fill='none'
-								stroke='currentColor'
-								viewBox='0 0 24 24'
-								xmlns='http://www.w3.org/2000/svg'>
-								<path
-									strokeLinecap='round'
-									strokeLinejoin='round'
-									strokeWidth={2}
-									d='M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z'
-								/>
-							</svg>
-							{cardValue > 0 && (
-								<div className={classes.cardValue}>
-									{cardValue}
-								</div>
-							)}
-						</Link>
-					</div>
+					{!auth.user?.admin ? (
+						<div className={classes.cart}>
+							<Link to='/cart' className={classes.link}>
+								<svg
+									className='w-6 h-6'
+									fill='none'
+									stroke='currentColor'
+									viewBox='0 0 24 24'
+									xmlns='http://www.w3.org/2000/svg'>
+									<path
+										strokeLinecap='round'
+										strokeLinejoin='round'
+										strokeWidth={2}
+										d='M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z'
+									/>
+								</svg>
+								{cardValue > 0 && (
+									<div className={classes.cardValue}>
+										{cardValue}
+									</div>
+								)}
+							</Link>
+						</div>
+					) : null}
 				</div>
 			</nav>
 		</div>

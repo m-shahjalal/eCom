@@ -4,6 +4,7 @@ import orderReducer from './order/reducer';
 import productReducer from './product/reducer';
 import userReducer from './user/reducer';
 import wishReducer from './wish/reducer';
+import adminReducer from './admin/reducer';
 
 const rootReducer = combineReducers({
 	products: productReducer.productList,
@@ -18,6 +19,18 @@ const rootReducer = combineReducers({
 	orders: orderReducer.getOrders,
 	cart: cartReducer,
 	wish: wishReducer,
+
+	adUsers: adminReducer.userReducer,
+	adMakeAdmin: adminReducer.makeAdminReducer,
+
+	adOrders: adminReducer.ordersReducer,
+	adUpdateOrder: adminReducer.orderUpdateReducer,
+	adDeleteOrder: adminReducer.orderDeleteReducer,
+
+	adProduct: adminReducer.productsReducer,
+	adUpdateProduct: adminReducer.updateProductReducer,
+	adDeleteProduct: adminReducer.deleteProductReducer,
+	adProductAdd: adminReducer.addProductReducer,
 });
 
 export default rootReducer;

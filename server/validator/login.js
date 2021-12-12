@@ -13,7 +13,7 @@ const loginValidator = [
 	(req, res, next) => {
 		const errorValidation = validationResult(req);
 		if (!errorValidation.isEmpty()) {
-			return res.json(errorValidation.array());
+			return res.status(400).json(errorValidation.array());
 		}
 		return next();
 	},

@@ -10,6 +10,9 @@ html,
 body {
 	font-family: Poppins, Arial, Helvetica, sans-serif;
 }
+button:disabled {
+	cursor: not-allowed;
+}
 .logo {
 	font-family: 'Josefin Sans', sans-serif;
 	color: #56b280;

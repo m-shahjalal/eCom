@@ -8,7 +8,6 @@ const signupValidator = require('../validator/signup');
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/', users.getAllUsers);
 router.post('/register', signupValidator, users.createUser);
 router.get('/check/:jwt', users.checkLogin);
 router.post('/login', loginValidator, users.login);

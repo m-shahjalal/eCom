@@ -1,0 +1,84 @@
+.main {
+	min-height: 100vh;
+	background: url(https://source.unsplash.com/73OZYNjVoNI);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.dashboard {
+	@apply m-auto flex justify-center bg-gray-800 flex-col h-screen text-gray-50 bg-opacity-95;
+}
+.mainHead {
+	@apply text-4xl font-bold text-center items-center text-white;
+	width: 90%;
+}
+.text {
+	width: 90%;
+	margin: 10px auto;
+}
+.head {
+	@apply text-3xl mt-12 my-8 font-bold text-center uppercase;
+}
+
+.table {
+	@apply container mx-auto border-gray-200 mb-10;
+}
+.tableData {
+	@apply px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider;
+}
+.tableCell {
+	@apply px-5 py-5 border-b border-gray-200 bg-white text-sm;
+}
+.tableText {
+	@apply text-gray-900;
+}
+
+.list {
+	@apply flex flex-col justify-between items-center m-auto h-full transition-all duration-200 ease-in-out rounded-lg;
+	width: 100%;
+	max-width: 350px;
+	box-shadow: 0px 4px 24px 0px #7b7b7b26;
+}
+
+.list:hover {
+	box-shadow: 0px 0px 20px 10px #7b7b7b26;
+	transform: scale(1.03);
+}
+.imageDiv {
+	@apply m-auto flex justify-center items-center pb-5 flex-1 sm:mt-0 rounded-lg;
+}
+.image {
+	@apply rounded-none rounded-t-lg border-gray-300 border border-b-0;
+	height: 100%;
+	overflow: hidden;
+	object-fit: cover;
+}
+.title {
+	@apply text-center mx-3;
+}
+.bottom {
+	@apply flex py-5 justify-between w-full p-5;
+	color: #56b280;
+}
+.review {
+	@apply flex justify-center items-center;
+}
+.right {
+	@apply flex;
+}
+.cart {
+	transition: all 0.6s ease;
+	margin-right: 16px;
+	cursor: pointer;
+}
+
+.cart:hover > svg {
+	transform: scale(1.2);
+}
+.alert {
+	@apply text-red-600;
+}
+.products {
+	@apply grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto mt-6 px-7 mb-8;
+	max-width: 1100px;
+}
