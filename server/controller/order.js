@@ -4,7 +4,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const controller = {};
 
 controller.payment = async (req, res, next) => {
-	const { items, address, payment, subTotal, tax, shippingCost } = req.body;
+	const { items, address, payment, subTotal, shippingCost, tax } = req.body;
 
 	try {
 		if (items.length <= 0) {
@@ -100,4 +100,3 @@ controller.getOrderList = async (req, res, next) => {
 	}
 };
 module.exports = controller;
- 
