@@ -1,6 +1,7 @@
 import * as adminApi from '../../api/admin';
 import {
 	ADMIN_ADD_PRODUCT_FAIL,
+	ADMIN_ADD_PRODUCT_INITIAL,
 	ADMIN_ADD_PRODUCT_REQUEST,
 	ADMIN_ADD_PRODUCT_SUCCESS,
 	ADMIN_DELETE_PRODUCT_FAIL,
@@ -22,6 +23,7 @@ import {
 	ADMIN_PRODUCTS_REQUEST,
 	ADMIN_PRODUCTS_SUCCESS,
 	ADMIN_UPDATE_PRODUCT_FAIL,
+	ADMIN_UPDATE_PRODUCT_INITIAL,
 	ADMIN_UPDATE_PRODUCT_REQUEST,
 	ADMIN_UPDATE_PRODUCT_SUCCESS,
 	ADMIN_USERS_FAIL,
@@ -60,6 +62,9 @@ actions.addProduct = (info) => async (dispatch) => {
 		dispatch({ type: ADMIN_ADD_PRODUCT_FAIL, payload: error.message });
 	}
 };
+
+actions.addProductInitial = () => ({ type: ADMIN_ADD_PRODUCT_INITIAL });
+actions.updateProductInitial = () => ({ type: ADMIN_UPDATE_PRODUCT_INITIAL });
 
 actions.updateProduct = (id, info) => async (dispatch) => {
 	dispatch({ type: ADMIN_UPDATE_PRODUCT_REQUEST });

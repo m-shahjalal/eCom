@@ -31,6 +31,7 @@ import WishScreen from '../screens/WishScreen';
 import Admin from './Admin';
 import classes from './app.module.css';
 import Private from './Private';
+import Users from '../components/Dashboard/Users';
 
 const Router = () => {
 	const { pathname } = useLocation();
@@ -45,6 +46,7 @@ const Router = () => {
 				pathname !== '/admin/add-product' &&
 				pathname !== '/admin/make-admin' &&
 				pathname !== '/admin/orders' &&
+				pathname !== '/admin/users' &&
 				pathname !== '/place-order' &&
 				pathname !== '/payment' && <Nav />}
 			<Routes>
@@ -138,6 +140,7 @@ const Router = () => {
 					<Route path='products' element={<Products />} />
 					<Route path='add-product' element={<AddProduct />} />
 					<Route path='make-admin' element={<MakeAdmin />} />
+					<Route path='users' element={<Users />} />
 				</Route>
 
 				<Route path='*' element={<Error />} />

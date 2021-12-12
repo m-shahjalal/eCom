@@ -4,7 +4,6 @@ const { verifyToken } = require('../utils/token');
 module.exports = async (req, res, next) => {
 	const user = req.user;
 	const admin = user?.roles[0] === 'admin' ? true : false;
-	console.log(admin);
 	if (admin) {
 		req.admin = true;
 		return next();

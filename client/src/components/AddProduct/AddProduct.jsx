@@ -3,20 +3,28 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import actions from '../../store/admin/actions';
 import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const supported = ['image/webp', 'image/png', 'image/jpg', 'image/jpeg'];
 
 const AddProduct = () => {
+	const { state } = useLocation();
 	const dispatch = useDispatch();
-	const { loading, data, error } = useSelector((state) => state.adProductAdd);
-
+	const navigate = useNavigate();
+	const { loading, data, error } = useSelector((reduxState) => {
+		if (state?._id) {
+			return reduxState.adUpdateProduct;
+		} else {
+			return reduxState.adProductAdd;
+		}
+	});
 	const formik = useFormik({
 		initialValues: {
-			name: '',
-			price: '',
-			category: '',
+			name: state?.name || '',
+			price: state?.price || '',
+			category: state?.category || '',
 			image: '',
-			description: '',
+			description: state?.description || '',
 		},
 
 		onSubmit: (values) => {
@@ -24,7 +32,9 @@ const AddProduct = () => {
 			Object.keys(values).forEach((value) =>
 				formData.append(value, values[value])
 			);
-			dispatch(actions.addProduct(formData));
+			!state._id
+				? dispatch(actions.addProduct(formData))
+				: dispatch(actions.updateProduct(state._id, formData));
 		},
 
 		validate: (value) => {
@@ -32,19 +42,32 @@ const AddProduct = () => {
 			if (!value.name) error.name = 'name is required';
 			if (!value.price) error.price = 'price is required';
 			if (!value.category) error.category = 'category is required';
-			if (!value.image) error.image = 'category is required';
-			if (!supported.includes(value.image?.type))
-				error.image = 'Only image acceptable';
-			if (value.image.size > 1024 * 2048)
-				error.image = 'max image size 2MB';
 			if (!value.description)
 				error.description = 'description is required';
+
+			if (!state?.image) {
+				if (!value.image) error.image = 'category is required';
+				if (!supported.includes(value.image?.type))
+					error.image = 'Only image acceptable';
+				if (value.image.size > 1024 * 2048)
+					error.image = 'max image size 2MB';
+			}
 			return error;
 		},
 	});
 
+	useEffect(() => {
+		state?._id &&
+			data?.success &&
+			navigate('/admin/products', { replace: true });
+		return () => dispatch(actions.updateProductInitial());
+	}, [state?._id, data?.success, navigate, dispatch]);
+
 	useEffect(
-		() => data?.success && formik.resetForm(),
+		() => {
+			data?.success && formik.resetForm();
+			return () => dispatch(actions.addProductInitial());
+		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[data?.success]
 	);
@@ -62,7 +85,9 @@ const AddProduct = () => {
 					)}
 					{data?.success && (
 						<div className='text-green-600 text-center mt-4'>
-							Product has been created successfully
+							Product has been{' '}
+							{`${state?._id ? 'updated' : 'created'}`}{' '}
+							successfully
 						</div>
 					)}
 					<form onSubmit={formik.handleSubmit}>
@@ -132,7 +157,6 @@ const AddProduct = () => {
 							<div className='w-full flex flex-col'>
 								<label className={classes.label}>Image</label>
 								<input
-									required
 									type='file'
 									name='image'
 									onChange={(e) =>

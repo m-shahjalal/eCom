@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
 import Modal from 'react-modal';
 import actions from '../../store/admin/actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 Modal.setAppElement('#root');
 
 const customStyles = {
@@ -49,7 +49,7 @@ const Item = ({ product }) => {
 				<div className={classes.right}>
 					<div className={classes.price}>${product.price}</div>
 				</div>
-				<Link to='#'>
+				<Link to='/admin/add-product' state={product}>
 					<AiOutlineEdit size='24px' />
 				</Link>
 				<button onClick={openModal}>

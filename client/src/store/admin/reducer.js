@@ -1,5 +1,6 @@
 import {
 	ADMIN_ADD_PRODUCT_FAIL,
+	ADMIN_ADD_PRODUCT_INITIAL,
 	ADMIN_ADD_PRODUCT_REQUEST,
 	ADMIN_ADD_PRODUCT_SUCCESS,
 	ADMIN_DELETE_PRODUCT_FAIL,
@@ -21,6 +22,7 @@ import {
 	ADMIN_PRODUCTS_REQUEST,
 	ADMIN_PRODUCTS_SUCCESS,
 	ADMIN_UPDATE_PRODUCT_FAIL,
+	ADMIN_UPDATE_PRODUCT_INITIAL,
 	ADMIN_UPDATE_PRODUCT_REQUEST,
 	ADMIN_UPDATE_PRODUCT_SUCCESS,
 	ADMIN_USERS_FAIL,
@@ -103,6 +105,8 @@ reducer.addProductReducer = (state = {}, { type, payload }) => {
 			return { loading: false, data: payload };
 		case ADMIN_ADD_PRODUCT_FAIL:
 			return { loading: false, error: payload };
+		case ADMIN_ADD_PRODUCT_INITIAL:
+			return {};
 		default:
 			return state;
 	}
@@ -116,6 +120,8 @@ reducer.updateProductReducer = (state = {}, { type, payload }) => {
 			return { loading: false, data: payload };
 		case ADMIN_UPDATE_PRODUCT_FAIL:
 			return { loading: false, error: payload };
+		case ADMIN_UPDATE_PRODUCT_INITIAL:
+			return {};
 		default:
 			return state;
 	}

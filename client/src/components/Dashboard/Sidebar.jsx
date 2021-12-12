@@ -6,7 +6,8 @@ import useAuth from '../../hooks/useAuth';
 import { Link, NavLink } from 'react-router-dom';
 
 let activeStyle = {
-	textDecoration: 'underline',
+	backgroundColor: 'rgba(52, 211, 153, 1)',
+	color: 'white',
 };
 
 const Sidebar = ({ open, setOpen }) => {
@@ -16,7 +17,7 @@ const Sidebar = ({ open, setOpen }) => {
 			className={`transition-all  duration-500  fixed top-0 ${
 				open ? 'left-0' : '-left-64'
 			}`}>
-			<div className='flex h-screen overflow-y-auto flex-col bg-green-50  w-64 px-4 py-8 border-r min-h-screen relative'>
+			<div className='flex h-screen overflow-y-auto flex-col bg-green-50  w-64 px-4 py-8 border-r min-h-screen relative z-50'>
 				<button
 					onClick={() => setOpen(false)}
 					className='absolute top-1 right-1  text-gray-600 w-8 h-8 rounded-full flex items-center justify-center active:bg-gray-300 focus:outline-none ml-6 hover:bg-gray-200 hover:text-gray-800'>
@@ -35,8 +36,11 @@ const Sidebar = ({ open, setOpen }) => {
 									key={id}
 									to={url}
 									style={({ isActive }) =>
-										isActive ? activeStyle : undefined
+										text !== 'Dashboard' && isActive
+											? activeStyle
+											: undefined
 									}
+									onClick={() => setOpen(false)}
 									className={`capitalize flex items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-200 hover:text-gray-700 transition-colors duration-200 transform rounded-md`}>
 									{icon}
 									<span className='mx-4 font-medium'>

@@ -44,12 +44,10 @@ admin.getProducts = async (req, res, next) => {
 admin.addProduct = async (req, res, next) => {
 	const { name, category, description, price } = req.body;
 	try {
-		if (!req.file) return res.json({ error: 'select an image file' });
+		if (!req.file) return res.json({ message: 'select an image file' });
 		const { path } = req.file;
 		const { url } = await cloudinary.cloudUpload(path, 'ecom/products');
 		fs.unlinkSync(path);
-		console.log('this is files', req.file);
-		console.log('this is body', req.body);
 		const product = await Product.create({
 			name,
 			description,
@@ -82,11 +80,11 @@ admin.updateProduct = async (req, res, next) => {
 		if (image) updateData.image = image;
 
 		const product = await Product.findOneAndUpdate(
-			{ id: productId },
+			{ _id: productId },
 			updateData,
-			{ new: true }
+			{ new: true, useFindAndModify: false }
 		);
-		res.status(201).json(product);
+		res.status(201).json({ success: true, product });
 	} catch (e) {
 		next(e);
 	}
@@ -99,7 +97,6 @@ admin.deleteProduct = async (req, res, next) => {
 		// NOTE:temporary preventing deleing from DB
 		// await Product.findOneAndDelete({ _id: productId });
 		// const result = await cloudinary.cloudDelete(`ecom/products/${id}`);
-		// console.log('this is');
 		res.status(204).json({ success: true });
 	} catch (e) {
 		next(e);

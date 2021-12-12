@@ -67,7 +67,6 @@ const EditProfile = () => {
 		}
 		dispatch(actions.updateUser(state.id, data));
 	};
-	console.log(state);
 
 	useEffect(() => !state && navigate('/profile'), [state, navigate]);
 	useEffect(

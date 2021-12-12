@@ -82,3 +82,7 @@
 	@apply grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto mt-6 px-7 mb-8;
 	max-width: 1100px;
 }
+.users {
+	@apply p-5 m-5 mb-10 border rounded-lg text-lg mx-auto;
+	max-width: 700px;
+}

@@ -1,5 +1,6 @@
 import classes from './Dashboard.module.css';
 import { useState } from 'react';
+import { RiDeleteBinLine } from 'react-icons/ri';
 
 const Orders = () => {
 	const [options, setOptions] = useState();
@@ -23,6 +24,7 @@ const Orders = () => {
 									<th className={classes.tableData}>
 										Created at
 									</th>
+									<th className={classes.tableData}>price</th>
 									<th className={classes.tableData}>
 										Status
 									</th>
@@ -78,6 +80,13 @@ const Orders = () => {
 												</select>
 											</span>
 										</span>
+									</td>
+									<td className={classes.tableCell}>
+										<RiDeleteBinLine
+											color='red'
+											size='24px'
+											className='cursor-pointer'
+										/>
 									</td>
 								</tr>
 							</tbody>
