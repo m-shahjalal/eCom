@@ -5,6 +5,7 @@ const userSchema = new Schema({
 	email: { type: String, required: true, trim: true, lowercase: true },
 	password: { type: String, required: true },
 	profile: { type: Schema.Types.ObjectId, ref: 'Profile' },
+	roles: { type: Array, default: ['user'] },
 });
 
 const User = model('User', userSchema);

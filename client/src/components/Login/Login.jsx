@@ -92,11 +92,10 @@ const Login = ({ state }) => {
 								<button
 									type='submit'
 									className={classes.button}>
-									{auth.loading && (
-										<div className='loader-sm'></div>
+									{auth.request && (
+										<div className='loader-sm mt-1'></div>
 									)}
-									{'  '}
-									Log in
+									<span className='ml-2'>Log in</span>
 								</button>
 							</Form>
 						)}

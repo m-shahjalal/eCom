@@ -106,10 +106,8 @@ const Profile = () => {
 								</div>
 							</div>
 							<Link
-								to={{
-									pathname: '/profile/edit',
-									state: { ...profile, id },
-								}}
+								to='/profile/edit'
+								state={{ ...profile, id }}
 								className={classes.button}>
 								Edit profile
 							</Link>
@@ -128,10 +126,8 @@ const Profile = () => {
 					</h2>
 					<div className={classes.buttonDiv}>
 						<Link
-							to={{
-								pathname: '/profile/edit',
-								state: { ...profile, id },
-							}}
+							to='/profile/edit'
+							state={{ ...profile, id }}
 							className={classes.createButton}>
 							create account
 						</Link>

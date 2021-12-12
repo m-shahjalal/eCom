@@ -40,7 +40,7 @@ module.exports = [
 		var errorValidation = validationResult(req);
 		if (!errorValidation.isEmpty()) {
 			return res
-				.status(403)
+				.status(400)
 				.json(errorValidation.array({ onlyFirstError: true }));
 		}
 		next();

@@ -34,7 +34,6 @@ actions.register = (info) => async (dispatch) => {
 	try {
 		dispatch({ type: USER_REGISTER_REQUEST });
 		const { data } = await userApi.register(info);
-		console.log('this is data: ' + data);
 		dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
 		localStorage.setItem('user', JSON.stringify(data));
 	} catch (error) {

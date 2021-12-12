@@ -8,7 +8,7 @@
 	@apply m-auto flex  justify-between items-center;
 }
 .logo {
-	@apply w-20 mx-4 mt-2;
+	@apply w-20 mx-4 mt-2 text-gray-50;
 }
 .logoImg {
 	@apply w-full;

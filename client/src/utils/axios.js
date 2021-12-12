@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-const instance = axios.create({
-	baseURL: 'https://ecom22.herokuapp.com/',
-	// baseURL: 'http://localhost:5000/',
-});
+const url =
+	process.env.NODE_ENV !== 'production'
+		? 'http://localhost:5000/'
+		: 'https://ecom22.herokuapp.com/';
+
+const instance = axios.create({ baseURL: url });
 
 instance.interceptors.request.use(
 	(config) => {

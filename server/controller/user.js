@@ -7,15 +7,6 @@ const cloudinary = require('../lib/cloudinary');
 
 const user = {};
 
-user.getAllUsers = async (_req, res, next) => {
-	try {
-		const users = await User.find();
-		res.json(users);
-	} catch (error) {
-		next(error);
-	}
-};
-
 user.createUser = async (req, res, next) => {
 	const { name, email, password } = req.body;
 	try {
@@ -35,16 +26,20 @@ user.login = async (req, res, next) => {
 	const { email, password } = req.body;
 	try {
 		const user = await User.findOne({ email });
+
 		if (user) {
 			const match = await crypto.comperePassword(password, user.password);
 			if (match) {
 				const jwt = token.generateToken({ email: user.email });
+				const admin = user.roles?.find((item) => item === 'admin');
+
 				res.json({
 					id: user._id,
 					name: user.name,
 					email: user.email,
 					token: jwt,
 					isLoggedIn: true,
+					admin: Boolean(admin),
 				});
 			} else {
 				res.status(403).json({ error: 'credential not match' });
@@ -62,12 +57,14 @@ user.checkLogin = async (req, res, next) => {
 	try {
 		const data = await token.verifyToken(jwt);
 		const user = await User.findOne({ email: data.email });
+		const admin = user.roles?.find((item) => item === 'admin');
 		res.status(200).json({
 			id: user._id,
 			name: user.name,
 			email: user.email,
 			token: jwt,
 			isLoggedIn: true,
+			admin: Boolean(admin),
 		});
 	} catch (error) {
 		next(error.message);
@@ -100,11 +97,9 @@ user.editUser = async (req, res, next) => {
 	try {
 		let image = '';
 		if (req.file) {
-			const uploader = async (path) =>
-				await cloudinary(path, 'ecom/avatar');
 			const { path } = req.file;
-			const { url } = await uploader(path);
-			image = url;
+			const uploader = await cloudinary.cloudUpload(path, 'ecom/avatar');
+			image = uploader.url;
 			fs.unlinkSync(path);
 		}
 

@@ -1,9 +1,10 @@
-import { Navigate, useLocation } from 'react-router';
+import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
-const Private = ({ children }) => {
-	let { isLoggedIn, loading } = useAuth();
+const Admin = ({ children }) => {
+	let { isLoggedIn, loading, user } = useAuth();
 	let location = useLocation();
+
 	if (loading) {
 		return (
 			<div className='py-32'>
@@ -12,9 +13,11 @@ const Private = ({ children }) => {
 		);
 	} else if (!isLoggedIn && loading === false) {
 		return <Navigate to='/login' state={{ from: location }} />;
+	} else if (!user.admin) {
+		return <Navigate to='/' state={{ from: location }} />;
 	} else {
 		return children;
 	}
 };
 
-export default Private;
+export default Admin;

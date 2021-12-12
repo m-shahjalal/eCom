@@ -1,35 +1,7 @@
-const cloudinary = require('../lib/cloudinary');
 const fs = require('fs');
 const Product = require('../models/Product');
 
 const product = {};
-
-product.addProduct = async (req, res, next) => {
-	const { name, category, description, price } = req.body;
-
-	try {
-		if (!req.file) return res.json({ error: 'select an image file' });
-
-		const uploader = async (path) =>
-			await cloudinary(path, 'ecom/products');
-
-		const { path } = req.file;
-		const { url } = await uploader(path);
-		fs.unlinkSync(path);
-
-		const product = await Product.create({
-			name,
-			description,
-			category,
-			price,
-			image: url,
-		});
-
-		res.json({ created: true, product });
-	} catch (error) {
-		next(error);
-	}
-};
 
 product.getProducts = async (req, res, next) => {
 	const page = parseInt(req.query.page) || 1;

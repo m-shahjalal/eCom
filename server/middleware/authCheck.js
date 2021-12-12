@@ -11,12 +11,12 @@ module.exports = async (req, res, next) => {
 		const { email } = await verifyToken(token);
 		const user = await User.findOne({ email }).select('-password -__v');
 		if (!user) {
-			return res.json({ message: 'Please login first' });
+			return res.status(401).json({ message: 'Please login first' });
 		} else {
 			req.user = user;
 			return next();
 		}
 	} catch (error) {
-		res.json(error);
+		res.status(400).json(error);
 	}
 };

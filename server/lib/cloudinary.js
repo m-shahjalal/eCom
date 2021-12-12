@@ -10,7 +10,9 @@ cloudinary.config({
 	api_secret: cloudinarySecret,
 });
 
-const cloudUpload = (file, folder) => {
+const cloudUploader = {};
+
+cloudUploader.cloudUpload = (file, folder) => {
 	return new Promise((resolve, reject) => {
 		cloudinary.uploader.upload(
 			file,
@@ -30,4 +32,13 @@ const cloudUpload = (file, folder) => {
 	});
 };
 
-module.exports = cloudUpload;
+cloudUploader.cloudDelete = (id) => {
+	return new Promise((resolve, reject) => {
+		cloudinary.uploader.destroy(id, (err, result) => {
+			if (err) return reject(err);
+			return resolve(result);
+		});
+	});
+};
+
+module.exports = cloudUploader;
