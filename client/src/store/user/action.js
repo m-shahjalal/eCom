@@ -22,6 +22,7 @@ actions.login = (info) => async (dispatch) => {
 	try {
 		dispatch({ type: USER_LOGIN_REQUEST });
 		const { data } = await userApi.login(info);
+		if (!data.id) throw new Error('Server error occurred');
 		dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
 		localStorage.setItem('user', JSON.stringify(data));
 	} catch (error) {

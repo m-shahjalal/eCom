@@ -29,6 +29,7 @@ userReducer.loginReducer = (
 				loading: false,
 				user: action.payload,
 				isLoggedIn: true,
+				request: false,
 			};
 		case USER_LOGIN_FAIL:
 			return {
@@ -36,6 +37,7 @@ userReducer.loginReducer = (
 				loading: false,
 				isLoggedIn: false,
 				error: action.payload,
+				request: false,
 			};
 		case USER_LOGOUT:
 			return { isLoggedIn: false, loading: false };
