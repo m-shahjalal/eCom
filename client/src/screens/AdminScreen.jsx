@@ -1,14 +1,11 @@
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
+import { IoMdLogOut } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
-import { Link, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import Sidebar from '../components/Dashboard/Sidebar';
 import actions from '../store/user/action';
 import classes from './screen.module.css';
-import { IoMdLogOut } from 'react-icons/io';
-
-import Sidebar from '../components/Dashboard/Sidebar';
-import Orders from '../components/Dashboard/Orders';
-import Home from '../components/Dashboard/Products';
 
 const AdminScreen = () => {
 	const [open, setOpen] = useState(false);

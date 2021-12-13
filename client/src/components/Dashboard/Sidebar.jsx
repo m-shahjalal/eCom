@@ -1,9 +1,9 @@
 import React from 'react';
 import { HiX } from 'react-icons/hi';
 import { ImUserTie } from 'react-icons/im';
-import { links } from './data';
-import useAuth from '../../hooks/useAuth';
 import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import { links } from './data';
 
 let activeStyle = {
 	backgroundColor: 'rgba(52, 211, 153, 1)',

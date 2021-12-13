@@ -1,9 +1,8 @@
 import React from 'react';
-import { FaProductHunt } from 'react-icons/fa';
-import { MdDashboardCustomize } from 'react-icons/md';
 import { BiTimer } from 'react-icons/bi';
-import { MdOutlineFiberNew } from 'react-icons/md';
+import { FaProductHunt } from 'react-icons/fa';
 import { GrUserAdmin } from 'react-icons/gr';
+import { MdDashboardCustomize, MdOutlineFiberNew } from 'react-icons/md';
 import { RiFileUserLine } from 'react-icons/ri';
 
 export const links = [

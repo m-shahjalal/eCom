@@ -8,11 +8,13 @@ const MakeAdmin = () => {
 	const { loading, data, error } = useSelector((state) => state.adMakeAdmin);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	useEffect(() => data && data?.success && setEmail(''), [navigate, data]);
+	useEffect(() => {
+		data && data?.success && setEmail('') && navigate(-1);
+	}, [navigate, data]);
 	return (
 		<div className='flex justify-center items-start pt-32 bg-gray-700 h-screen'>
 			<div className='bg-white p-10 rounded-xl'>
-				<h1 className='text-center text-2xl font-semibold text-gray-500'>
+				<h1 className='text-center text-2xl font-semibold text-gray-800'>
 					Make a New Admin
 				</h1>
 				{data?.success && (
@@ -30,7 +32,7 @@ const MakeAdmin = () => {
 						<input
 							type='email'
 							placeholder='Give The Email of User'
-							className='outline-none text-gray-700 text-lg border-b-2'
+							className='outline-none text-gray-800 text-lg border-b-2'
 							value={email || ''}
 							onChange={(e) => setEmail(e.target.value)}
 							required

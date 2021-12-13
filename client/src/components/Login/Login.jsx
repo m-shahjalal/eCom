@@ -1,8 +1,7 @@
 import { Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
-import useAuth from '../../hooks/useAuth';
 import actions from '../../store/user/action';
 import classes from './login.module.css';
 
@@ -17,7 +16,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const Login = ({ state }) => {
-	const auth = useAuth();
+	const auth = useSelector((state) => state.userAuth);
 	const dispatch = useDispatch();
 	const submitHandler = (value) => {
 		dispatch(actions.login(value));

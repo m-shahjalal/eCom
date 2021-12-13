@@ -134,7 +134,7 @@ admin.deleteOrder = async (req, res, next) => {
 	const productId = req.params.id;
 	try {
 		await Order.findOneAndDelete({ _id: productId });
-		res.status(204).json(result);
+		res.status(204).json({ success: true });
 	} catch (e) {
 		next(e);
 	}

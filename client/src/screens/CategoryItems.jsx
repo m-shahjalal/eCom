@@ -16,7 +16,9 @@ const CategoryItems = () => {
 		return () => dispatch(clearCategory());
 	}, [dispatch, params]);
 	return category.products.length > 0 ? (
-		<Products products={category} title={params.category} />
+		<div className='pt-10'>
+			<Products products={category} title={params.category} />
+		</div>
 	) : category.loading ? (
 		<div className='loader'></div>
 	) : (

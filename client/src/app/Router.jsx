@@ -1,10 +1,10 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import AddProduct from '../components/AddProduct/AddProduct';
-import Products from '../components/Dashboard/Products';
+import Dashboard from '../components/Dashboard/Dashboard';
 import MakeAdmin from '../components/Dashboard/MakeAdmin';
 import Orders from '../components/Dashboard/Orders';
-import Dashboard from '../components/Dashboard/Dashboard';
-
+import Products from '../components/Dashboard/Products';
+import Users from '../components/Dashboard/Users';
 import Error from '../components/Error/Error';
 import Footer from '../components/Footer/Footer';
 import Nav from '../components/Nav/Nav';
@@ -31,7 +31,6 @@ import WishScreen from '../screens/WishScreen';
 import Admin from './Admin';
 import classes from './app.module.css';
 import Private from './Private';
-import Users from '../components/Dashboard/Users';
 
 const Router = () => {
 	const { pathname } = useLocation();

@@ -24,10 +24,10 @@
 	@apply w-40 mb-4;
 }
 .col2 {
-	@apply flex justify-between col-span-4 mb-10 p-4;
+	@apply flex justify-between col-span-4 mb-10 p-4 flex-wrap;
 }
 .cols {
-	@apply block;
+	@apply block px-2 md:px-0;
 }
 .head {
 	@apply mb-6 p-0;
@@ -40,7 +40,7 @@
 	@apply py-3 font-light;
 }
 .bottomContainer {
-	@apply text-gray-600 m-auto h-16;
+	@apply text-gray-600 m-auto h-16 px-4;
 	max-width: 1100px;
 }
 .bottom {

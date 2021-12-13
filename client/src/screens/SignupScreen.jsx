@@ -1,5 +1,5 @@
-import Sign from '../components/Register/Sign';
 import { useLocation } from 'react-router';
+import Sign from '../components/Register/Sign';
 
 const SignScreen = () => {
 	const { state } = useLocation();

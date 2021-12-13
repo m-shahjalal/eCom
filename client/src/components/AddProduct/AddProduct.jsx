@@ -1,9 +1,9 @@
-import classes from './AddProduct.module.css';
 import { useFormik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import actions from '../../store/admin/actions';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import actions from '../../store/admin/actions';
+import classes from './AddProduct.module.css';
 
 const supported = ['image/webp', 'image/png', 'image/jpg', 'image/jpeg'];
 

@@ -1,0 +1,26 @@
+.tableData {
+	@apply px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider;
+}
+.tableCell {
+	@apply px-5 py-5 border-b border-gray-200 bg-white text-sm;
+}
+.tableText {
+	@apply text-gray-900;
+}
+/* Button css */
+
+.button {
+	@apply md:w-14 md:h-7 w-12 h-6 flex items-center rounded-full p-1 cursor-pointer bg-gray-200 border border-gray-300;
+}
+.innerButton {
+	@apply md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transform duration-300 ease-in-out;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.39);
+}
+.successButton {
+	@apply transform translate-x-6 bg-green-500;
+}
+.warnButton {
+	@apply bg-yellow-400;
+}
+
+/* Button css */

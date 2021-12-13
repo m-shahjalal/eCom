@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import classes from './Dashboard.module.css';
-import { Link } from 'react-router-dom';
 import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
 import Modal from 'react-modal';
-import actions from '../../store/admin/actions';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import actions from '../../store/admin/actions';
+import classes from './Dashboard.module.css';
 Modal.setAppElement('#root');
 
 const customStyles = {

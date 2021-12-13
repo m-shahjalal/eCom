@@ -12,9 +12,9 @@ const Admin = ({ children }) => {
 			</div>
 		);
 	} else if (!isLoggedIn && loading === false) {
-		return <Navigate to='/login' state={{ from: location }} />;
+		return <Navigate replace to='/login' state={{ from: location }} />;
 	} else if (!user.admin) {
-		return <Navigate to='/' state={{ from: location }} />;
+		return <Navigate replace to='/' state={{ from: location }} />;
 	} else {
 		return children;
 	}

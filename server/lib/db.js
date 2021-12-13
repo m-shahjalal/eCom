@@ -10,6 +10,7 @@ const db = async (app) => {
 		await mongoose.connect(url, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
+			useFindAndModify: false,
 		});
 		logger.info('db connection established');
 		return app;

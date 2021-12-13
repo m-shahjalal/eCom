@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import useAuth from '../../hooks/useAuth';
-import { Link, useNavigate } from 'react-router-dom';
-import logo from '../../images/logo.png';
-import classes from './nav.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import actions from '../../store/user/action';
-import { HiOutlineDocumentSearch } from 'react-icons/hi';
 import { BiCategory, BiLockAlt } from 'react-icons/bi';
+import { HiOutlineDocumentSearch } from 'react-icons/hi';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import logo from '../../images/logo.png';
+import actions from '../../store/user/action';
+import classes from './nav.module.css';
 
 const Nav = () => {
 	const auth = useAuth();

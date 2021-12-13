@@ -1,5 +1,5 @@
-import { useNavigate, useLocation } from 'react-router';
 import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router';
 import Login from '../components/Login/Login';
 import useAuth from '../hooks/useAuth';
 

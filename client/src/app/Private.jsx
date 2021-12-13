@@ -11,7 +11,7 @@ const Private = ({ children }) => {
 			</div>
 		);
 	} else if (!isLoggedIn && loading === false) {
-		return <Navigate to='/login' state={{ from: location }} />;
+		return <Navigate replace to='/login' state={{ from: location }} />;
 	} else {
 		return children;
 	}

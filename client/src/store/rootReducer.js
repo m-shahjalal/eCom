@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
+import adminReducer from './admin/reducer';
 import cartReducer from './cart/reducer';
 import orderReducer from './order/reducer';
 import productReducer from './product/reducer';
 import userReducer from './user/reducer';
 import wishReducer from './wish/reducer';
-import adminReducer from './admin/reducer';
 
 const rootReducer = combineReducers({
 	products: productReducer.productList,
