@@ -7,7 +7,7 @@ const App = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		const user = JSON.parse(localStorage.getItem('user'));
-		const token = (user && user.token) || false;
+		const token = user?.token || false;
 		if (token) dispatch(actions.checkLogin(token));
 	}, [dispatch]);
 	return <Router />;

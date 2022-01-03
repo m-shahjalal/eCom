@@ -14,32 +14,32 @@ export const links = [
 	},
 	{
 		id: 2,
-		url: 'users',
-		text: 'Users List',
-		icon: <RiFileUserLine className='w-5 h-5' />,
-	},
-	{
-		id: 3,
 		url: 'orders',
 		text: 'Manage Orders',
 		icon: <BiTimer className='w-5 h-5' />,
 	},
 	{
-		id: 4,
+		id: 3,
 		url: 'products',
 		text: 'Manage Product',
 		icon: <FaProductHunt className='w-5 h-5' />,
 	},
 	{
-		id: 5,
+		id: 4,
 		url: 'add-product',
 		text: 'Add New Product',
 		icon: <MdOutlineFiberNew className='w-5 h-5' />,
 	},
 	{
-		id: 6,
+		id: 5,
 		url: 'make-admin',
 		text: 'Make admin',
 		icon: <GrUserAdmin className='w-5 h-5' />,
+	},
+	{
+		id: 6,
+		url: 'users',
+		text: 'Users List',
+		icon: <RiFileUserLine className='w-5 h-5' />,
 	},
 ];

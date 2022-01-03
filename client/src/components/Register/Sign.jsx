@@ -33,8 +33,6 @@ const Sign = ({ state }) => {
 		userSignup.success && navigate('/login', { state: state });
 	}, [navigate, userSignup.success, state]);
 
-	console.log(state);
-
 	return (
 		<section className={classes.sign}>
 			<div className={classes.signContainer}>
@@ -145,7 +143,7 @@ const Sign = ({ state }) => {
 									{userSignup.loading && (
 										<div className='loader-sm'></div>
 									)}
-									<span> submit</span>
+									<span>Register</span>
 								</button>
 							</Form>
 						)}
