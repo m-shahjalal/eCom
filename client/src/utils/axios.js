@@ -3,7 +3,7 @@ import axios from 'axios';
 const url =
 	process.env.NODE_ENV !== 'production'
 		? 'http://localhost:5000/'
-		: 'https://ecom22.herokuapp.com/';
+		: 'https://ccom.onrender.com/';
 
 const instance = axios.create({ baseURL: url });
 
