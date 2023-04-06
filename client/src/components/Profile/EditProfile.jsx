@@ -60,7 +60,6 @@ const EditProfile = () => {
 		avatar: '',
 	};
 	const submitHandler = (values) => {
-		console.log(values);
 		const data = new FormData();
 		for (const key in values) {
 			data.append(key, values[key]);

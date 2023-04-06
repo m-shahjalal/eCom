@@ -77,7 +77,6 @@ actions.updateProduct = (id, info) => async (dispatch) => {
 };
 actions.deleteProduct = (id) => async (dispatch, state) => {
 	dispatch({ type: ADMIN_DELETE_PRODUCT_REQUEST });
-	console.log(id);
 	try {
 		const result = state().adProduct.data.filter((i) => i._id !== id);
 		const { data } = await adminApi.deleteProduct(id);
@@ -110,7 +109,6 @@ actions.deleteOrder = (id) => async (dispatch, state) => {
 	dispatch({ type: ADMIN_ORDER_DELETE_REQUEST });
 	try {
 		const result = state().adOrders.data.filter((i) => i._id !== id);
-		console.log(result);
 		dispatch({ type: ADMIN_ORDERS_SUCCESS, payload: result });
 		const { data } = await adminApi.deleteOrder(id);
 		dispatch({ type: ADMIN_ORDER_DELETE_SUCCESS, payload: data });

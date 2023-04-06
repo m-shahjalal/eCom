@@ -3,7 +3,6 @@ import classes from './item.module.css';
 
 const OrderItem = () => {
 	const { state } = useLocation();
-	console.log(state)
 	return (
 		<div className={classes.contain}>
 			<h2 className={classes.lead}>Order Details</h2>
