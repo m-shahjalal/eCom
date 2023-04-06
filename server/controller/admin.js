@@ -21,7 +21,7 @@ admin.makeAdmin = async (req, res, next) => {
 	try {
 		const email = req.params.email;
 		const updateObj = { roles: ['admin'] };
-		const result = await User.findOneAndUpdate(
+		await User.findOneAndUpdate(
 			{ email },
 			{ $set: updateObj },
 			{ upsert: true, new: true }
@@ -32,7 +32,7 @@ admin.makeAdmin = async (req, res, next) => {
 	}
 };
 
-admin.getProducts = async (req, res, next) => {
+admin.getProducts = async (_req, res, next) => {
 	try {
 		const products = await Product.find({});
 		res.status(200).json(products);
@@ -69,7 +69,7 @@ admin.updateProduct = async (req, res, next) => {
 		let image = '';
 		if (req.file) {
 			const { path } = req.file;
-			const uploader = await cloudinary.cloudUpload(
+			await cloudinary.cloudUpload(
 				path,
 				'ecom/products'
 			);
@@ -97,13 +97,13 @@ admin.deleteProduct = async (req, res, next) => {
 		// NOTE:temporary preventing deleing from DB
 		// await Product.findOneAndDelete({ _id: productId });
 		// const result = await cloudinary.cloudDelete(`ecom/products/${id}`);
-		res.status(204).json({ success: true });
+		res.status(204).json({ success: true, message: 'Delete method is disabled for some reason' });
 	} catch (e) {
 		next(e);
 	}
 };
 
-admin.getOrders = async (req, res, next) => {
+admin.getOrders = async (_req, res, next) => {
 	try {
 		const orders = await Order.find();
 		res.status(200).json(orders);

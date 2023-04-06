@@ -2,8 +2,10 @@ const { body, validationResult } = require('express-validator');
 
 const loginValidator = [
 	body('email')
-		.isLength({ min: 5, max: 15 })
-		.withMessage('email is required!')
+	 	.isEmail()
+		.withMessage('Give right email address')
+		.isLength({ min: 5 })
+		.withMessage('Too short email')
 		.trim()
 		.toLowerCase(),
 	body('password')
@@ -13,7 +15,7 @@ const loginValidator = [
 	(req, res, next) => {
 		const errorValidation = validationResult(req);
 		if (!errorValidation.isEmpty()) {
-			return res.status(400).json(errorValidation.array());
+			return res.status(400).json({error: errorValidation.array()[0].msg});
 		}
 		return next();
 	},

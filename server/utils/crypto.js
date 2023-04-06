@@ -7,7 +7,7 @@ crypto.genPassword = (text) => {
 		bcrypt.genSalt(10, (err, salt) => {
 			if (err) return reject(err);
 			bcrypt.hash(text, salt, (err, hash) => {
-				if (err) return reject(error);
+				if (err) return reject(err);
 				if (hash) return resolve(hash);
 			});
 		});

@@ -24,6 +24,4 @@ router.get('/orders', admin.getOrders);
 router.put('/orders/:id', admin.deliveryOrder);
 router.delete('/orders/:id', admin.deleteOrder);
 
-//
-
 module.exports = router;

@@ -1,9 +1,6 @@
-const User = require('../models/User');
-const { verifyToken } = require('../utils/token');
-
 module.exports = async (req, res, next) => {
 	const user = req.user;
-	const admin = user?.roles[0] === 'admin' ? true : false;
+	const admin = user?.roles.includes('admin') ? true : false;
 	if (admin) {
 		req.admin = true;
 		return next();
