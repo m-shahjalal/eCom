@@ -1,16 +1,39 @@
+.container {
+	background-color: white;
+	padding: 0 20px;
+}
 .hero {
-	@apply bg-gray-200 mt-16 flex flex-col justify-center items-center;
-	background-image: linear-gradient(
-			45deg,
-			rgba(99, 36, 122, 0.63),
-			rgba(90, 165, 250, 0.6)
-		),
-		url('https://source.unsplash.com/random');
-	background-repeat: no-repeat;
-	background-position: top;
-	background-attachment: fixed;
-	background-size: cover;
-	height: 100vh;
+	@apply mt-16 flex-col-reverse flex justify-center items-center sm:flex-row sm:h-screen pt-24 sm:pt-0;
+	max-width: 1300px;
+	margin: 0 auto;
+}
+.content {
+	@apply flex flex-col justify-center items-center flex-1;
+}
+.heading {
+	@apply text-4xl font-bold mb-4 text-center mt-5;
+	color: #0b254bb3;
+	font-family: 'Poppins';
+}
+.shopButton {
+	@apply text-center bg-green-400 text-white font-bold py-2 px-4 rounded;
+	padding: 8px 44px;
+	max-width: 310px;
+	width: 70%;
+	margin-top: 30px;
+	color: white;
+	transition: all 0.3s ease-in-out;
+	margin-bottom: 23px;
+}
+.leadText {
+	@apply text-center mt-2;
+	color: #0b254bb3;
+}
+.image {
+	@apply flex-1;
+	width: 350px;
+	object-fit: contain;
+	right: 170px;
 }
 .box {
 	max-width: 730px;

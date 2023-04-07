@@ -122,14 +122,14 @@ const Profile = () => {
 						<img src={image} alt='user' />
 					</div>
 					<h2 className={classes.notUserLead}>
-						You don't have account yet
+						You don't have profile yet
 					</h2>
 					<div className={classes.buttonDiv}>
 						<Link
 							to='/profile/edit'
 							state={{ ...profile, id }}
 							className={classes.createButton}>
-							create account
+							create profile
 						</Link>
 						<button
 							onClick={logOut}
