@@ -1,6 +1,4 @@
-
-# HOMY -(eommerce site)
-
+# HOMY -(ECommerce site)
 
 This is a full-stack eCommerce site where they sell nursery staffs
 
@@ -14,7 +12,7 @@ This is a full-stack eCommerce site where they sell nursery staffs
 - profile CRU
 - review section
 - Order section
-  
+
 ## Technology used
 
 - **react**
@@ -27,10 +25,8 @@ This is a full-stack eCommerce site where they sell nursery staffs
 - **nodejs**
 - **jsonwebtoken**
 
-
 ## 🔗 LINKS
+
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://m-shahjalal.netlify.app)
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/m-shahjalal)
-
-  
