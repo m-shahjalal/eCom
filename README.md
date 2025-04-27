@@ -2,7 +2,7 @@
 
 This is a full-stack eCommerce site where they sell nursery staffs
 
-[🔷LIVE LINK🔷 ](https://cmrc.netlify.app/)
+[🔷LIVE LINK🔷 ](https://e-homy.vercel.app/)
 
 ## Features
 
