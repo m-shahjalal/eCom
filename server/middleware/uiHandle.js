@@ -1,8 +1,10 @@
-export default (app) => {
-  if (process.env.NODE_ENV !== "production") return;
+const express = require("express");
+const path = require("path");
 
-  app.use(express.static(path.join(__dirname, "client/build")));
+module.exports = (app) => {
+  app.use(express.static(path.join(process.cwd(), "client/build")));
+
   app.get("*", (_, res) =>
-    res.sendFile(path.join(__dirname, "client/build", "index.html"))
+    res.sendFile(path.join(process.cwd(), "client/build", "index.html"))
   );
 };
