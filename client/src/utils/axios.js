@@ -2,8 +2,8 @@ import axios from "axios";
 
 const url =
   process.env.NODE_ENV === "production"
-    ? "https://ccom.onrender.com/"
-    : "http://localhost:4000/";
+    ? "/api/" // Use relative path in production
+    : "http://localhost:4000/"; // Use for development
 
 const instance = axios.create({ baseURL: url });
 
