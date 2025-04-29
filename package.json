@@ -1,14 +1,14 @@
 {
   "name": "homy",
   "version": "1.0.0",
-  "description": "This is mern-stack server api",
+  "description": "This is mernstack server api",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "cd client && npm install && npm run build",
+    "build": "cd client && npm install && NODE_OPTIONS=--openssl-legacy-provider npm run build",
     "vercel-build": "npm run build"
   },
   "author": "Shahjalal",
