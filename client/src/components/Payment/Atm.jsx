@@ -2,7 +2,7 @@ import valid from "card-validator";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
 import Card from "react-credit-cards-2";
-import "react-credit-cards/es/styles-compiled.css";
+import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
